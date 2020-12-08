@@ -2,7 +2,7 @@
   "name": "yp_merchant",
   "version": "1.0.0",
   "private": true,
-  "description": "taro with redux",
+  "description": "谊品生鲜供应商小程序",
   "templateInfo": {
     "name": "redux",
     "typescript": true,
