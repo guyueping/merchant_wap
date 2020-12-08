@@ -6,7 +6,6 @@ import { View } from '@tarojs/components'
 
 import './app.styl'
 
-
 // const store = configStore()
 
 class App extends Component {
