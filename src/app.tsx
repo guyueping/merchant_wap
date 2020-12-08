@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 // import { Provider } from 'react-redux'
 import { View } from '@tarojs/components'
 
-
 // import configStore from './store'
 
 import './app.styl'
