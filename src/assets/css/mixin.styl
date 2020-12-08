@@ -1,0 +1,60 @@
+flex(align=stretch, justify=flex-start, direction=row)
+  display -webkit-flex
+  display flex
+  // -webkit-align-items align
+  align-items align
+  // -webkit-justify-content justify
+  justify-content justify
+  // -webkit-flex-direction direction
+  flex-direction direction
+
+vendor(prop, value)
+  {prop} value
+  // -webkit-{prop} value
+
+animation()
+  vendor('animation', arguments)
+
+transform()
+  vendor('transform', arguments)
+
+border-radius()
+  vendor('border-radius', arguments)
+
+clearfix()
+  &:after
+    content " "
+    display block
+    clear both
+    visibility hidden
+    height 0
+
+/* 单行文字溢出时出现省略号，需设定宽度 */
+overflowfn()
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+
+/*图片垂直水平居中*/
+imgcenterfn(w,h)
+  width w
+  height h
+  display inline-block
+  overflow hidden
+  text-align center
+  line-height h - 3
+  vertical-align middle
+  img
+    vertical-align middle
+    max-width w
+    max-height h
+
+/*三角形*/
+trianglefn()
+  display block
+  font-size 0
+  height 0
+  line-height 0
+  overflow hidden
+  width 0
+
