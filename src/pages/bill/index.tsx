@@ -1,9 +1,8 @@
 import React from 'react'
 import { View } from '@tarojs/components'
 
-const Login = () => {
+const List = () => {
   
-  return  <View>Login</View>
+  return  <View>结账单</View>
 }
-export default Login
-
+export default List

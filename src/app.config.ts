@@ -1,31 +1,38 @@
 export default {
   pages: [
-    'pages/index/index',
+    'pages/home/index',
+    'pages/mine/index',
     'pages/login/index',
-    'pages/list/index'
+    'pages/list/index',
+    'pages/sale/index',
+    'pages/account/index',
+    'pages/task/index',
+    'pages/order/index',
+    'pages/afterSale/index',
+    'pages/bill/index'
   ],
   tabBar: {
     list: [{
-      // 'iconPath': 'resource/latest.png',
-      // 'selectedIconPath': 'resource/lastest_on.png',
-      'pagePath': 'pages/index/index',
+      'iconPath': 'assets/images/icon_home.png',
+      'selectedIconPath': 'assets/images/icon_home_primary.png',
+      'pagePath': 'pages/home/index',
       'text': '首页'
     }, {
-      // 'iconPath': 'resource/hotest.png',
-      // 'selectedIconPath': 'resource/hotest_on.png',
-      'pagePath': 'pages/login/index',
+      'iconPath': 'assets/images/icon_my.png',
+      'selectedIconPath': 'assets/images/icon_my_primary.png',
+      'pagePath': 'pages/mine/index',
       'text': '我的'
     }],
-    'color': '#000',
-    'selectedColor': '#56abe4',
+    'color': '#969696',
+    'selectedColor': '#4F5AF7',
     'backgroundColor': '#fff',
     'borderStyle': 'white'
   },
   window: {
     backgroundColor: '#eeeeee',
     backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
+    navigationBarBackgroundColor: '#4D66FF',
     navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
+    navigationBarTextStyle: 'white'
   }
 }
