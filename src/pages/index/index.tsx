@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { View, Button, Text } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import Taro, { navigateTo } from '@tarojs/taro'
+import { AtButton } from 'taro-ui'
 
-import './index.styl'
 const IndexPage = () => {
   const linkPage = () => {
     navigateTo({ url: '/pages/list/index' })
@@ -15,7 +15,7 @@ const IndexPage = () => {
   return (
     <View className='flex_center_center_column'>
       <Text>首页</Text>
-      <Button onClick={linkPage}>按钮</Button>
+      <AtButton onClick={linkPage} type='primary'>按钮文案</AtButton>
     </View>
   )
 }

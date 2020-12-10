@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 
 // import configStore from './store'
-
+import 'taro-ui/dist/style/index.scss' 
 import './app.styl'
 
 // const store = configStore()

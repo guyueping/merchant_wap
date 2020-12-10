@@ -2,7 +2,7 @@
 import path from 'path'
 
 const config = {
-  projectName: 'taroRedux',
+  projectName: 'yp_merchant_minApp',
   date: '2020-12-7',
   designWidth: 750,
   deviceRatio: {
@@ -48,6 +48,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    esnextModules: ['taro-ui'],
     postcss: {
       autoprefixer: {
         enable: true,
@@ -62,7 +63,7 @@ const config = {
         }
       }
     },
-    outputRoot: process.env.TARO_ENV === 'h5' ? 'dist_h5' : 'dist' // 如果是h5,打包后文件放在dist_h5
+    outputRoot: process.env.TARO_ENV === 'h5' ? 'dist_h5' : 'dist', // 如果是h5,打包后文件放在dist_h5
     // webpackChain (chain) {
     //   console.log('chain>>>', chain.output.store.get('path'))
     //   // chain.plugin('analyzer')
