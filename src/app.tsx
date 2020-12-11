@@ -30,7 +30,7 @@ class App extends Component {
   // 请勿修改此函数
   render () {
     return (
-      <View>
+      <View className='app_container'>
         {this.props.children}
       </View>
       // <Provider store={store}>

@@ -29,7 +29,7 @@ export default {
     'borderStyle': 'white'
   },
   window: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#F1F2F6',
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#4D66FF',
     navigationBarTitleText: 'WeChat',
