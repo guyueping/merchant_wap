@@ -1,5 +1,6 @@
 export default {
   // entryPagePath: 'pages/records/index',
+  
   pages: [
     'pages/home/index',
     'pages/mine/index',
