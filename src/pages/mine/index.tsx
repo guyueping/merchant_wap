@@ -2,9 +2,9 @@ import React from 'react'
 import { View } from '@tarojs/components'
 import { AtButton, AtList, AtListItem } from 'taro-ui'
 import './index.styl'
-import iconHelp from '../../assets/images/icon_help.png'
-import iconOpinion from '../../assets/images/icon_opinion.png'
-import iconAvatar from '../../assets/images/icon_avatar.png'
+import iconHelp from '@/images/icon_help.png'
+import iconOpinion from '@/images/icon_opinion.png'
+import iconAvatar from '@/images/icon_avatar.png'
 
 const Mine = () => {
   

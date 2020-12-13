@@ -5,11 +5,14 @@ import { View } from '@tarojs/components'
 // import configStore from './store'
 import 'taro-ui/dist/style/index.scss' 
 import './app.styl'
+import appLaunch from './app-launch'
 
 // const store = configStore()
 
 class App extends Component {
-  componentDidMount () {}
+  componentDidMount () {
+    appLaunch()
+  }
 
   componentDidShow () {}
 

@@ -1,4 +1,5 @@
 export default {
+  // entryPagePath: 'pages/records/index',
   pages: [
     'pages/home/index',
     'pages/mine/index',
@@ -9,7 +10,8 @@ export default {
     'pages/task/index',
     'pages/order/index',
     'pages/afterSale/index',
-    'pages/bill/index'
+    'pages/bill/index',
+    'pages/records/index'
   ],
   tabBar: {
     list: [{

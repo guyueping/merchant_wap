@@ -1,9 +1,9 @@
-import iconSale from '../../assets/images/icon_sale.png'
-import iconAccount from '../../assets/images/icon_account.png'
-import iconTask from '../../assets/images/icon_task.png'
-import iconOrder from '../../assets/images/icon_order.png'
-import iconTotal from '../../assets/images/icon_total.png'
-import iconBill from '../../assets/images/icon_bill.png'
+import iconSale from '@/images/icon_sale.png'
+import iconAccount from '@/images/icon_account.png'
+import iconTask from '@/images/icon_task.png'
+import iconOrder from '@/images/icon_order.png'
+import iconTotal from '@/images/icon_total.png'
+import iconBill from '@/images/icon_bill.png'
 
 
 export const gridData = [
