@@ -1,31 +1,109 @@
-import React, { useState } from 'react'
-import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import { AtTabs, AtTabsPane } from 'taro-ui'
-import styles from './index.module.styl'
+import React, { useState, useEffect } from 'react'
+import Taro, { useShareAppMessage, usePullDownRefresh, useReachBottom } from '@tarojs/taro'
+import { View, Text, Picker, ScrollView } from '@tarojs/components'
+import './index.styl'
+import ListItem from './listItem/index'
+import List from '@/components/list'
+// import styles from './index.modules.styl'
 
-const tabList = [{ title: '全部' }, { title: '提现' }, { title: '垫付还款' }]
+const typeAry = ['全部', '提现', '垫付还款']
+const ary = [12]
+const RecordList = () => {
+  const [dateSelectOpen, setDateSelectOpen] = useState(false)
+  const [typeSelectOpen, setTypeSelectOpen] = useState(false)
+  const [selectedDate, setSelectedDate] = useState('2020年11月')
+  const [selectedType, setSelectedType] = useState(0)
+  const [currentMonth, setCurrentMonth] = useState(12)
+  const [showLoading, setShowLoading] = useState(false)
 
-const List = () => {
-  const [currentTab, setCurrentTab] = useState<number>(0)
 
-  const handleClick = (tabIndex: number) => {
-    currentTab !== tabIndex && setCurrentTab(tabIndex)
+  useShareAppMessage(res => {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '自定义转发标题',
+      path: '/page/user?id=123'
+    }
+  })
+
+  // usePullDownRefresh(() => {
+  //   console.log('onPullDownRefresh')
+  // })
+  
+  // useReachBottom(() => {
+  //   console.log('onPullDownRefresh')
+  // })
+
+  const handleDateClick = () => {
+    setDateSelectOpen(!dateSelectOpen)
   }
+
+  const handleTypeClick = () => {
+    setTypeSelectOpen(!typeSelectOpen)
+  }
+
+  const onDateChange = e => {
+    setSelectedDate(e.detail.value)
+    setDateSelectOpen(false)
+  }
+
+  const dateCancel = () => {
+    setDateSelectOpen(false)
+  }
+
+  const onTypeChange = e => {
+    setSelectedType(e.detail.value * 1 || 0)
+    setTypeSelectOpen(false)
+  }
+
+  const typeCancel = () => {
+    setTypeSelectOpen(false)
+  }
+
+  const onScrollToLower = () => {
+    if(currentMonth !== 1) {
+      setShowLoading(true)
+      setTimeout(() => {
+        setCurrentMonth(currentMonth - 1)
+        ary.push(currentMonth - 1)
+        setShowLoading(false)
+      }, 1000)
+    }
+  }
+
+
   return  (
-    <View className={styles.recordPage_box}>
-      <AtTabs current={currentTab} tabList={tabList} onClick={handleClick}>
-        <AtTabsPane current={currentTab} index={0} >
-          <View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;' >标签页一的内容</View>
-        </AtTabsPane>
-        <AtTabsPane current={currentTab} index={1}>
-          <View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;'>标签页二的内容</View>
-        </AtTabsPane>
-        <AtTabsPane current={currentTab} index={2}>
-          <View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;'>标签页三的内容</View>
-        </AtTabsPane>
-      </AtTabs>
+    <View className='recordPage_box'>
+      <View className='condition_box flex_center_center_row'>
+        <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
+          <Picker mode='date' onChange={onDateChange} onCancel={dateCancel}>
+            {selectedDate}
+          </Picker> 
+        </View>
+        <View className={`selection flex_center_center_row${typeSelectOpen ? ' selection_open' : ''}`} onClick={handleTypeClick}>
+          <Picker mode='selector' range={typeAry} onChange={onTypeChange} onCancel={typeCancel}>
+            {typeAry[selectedType]}
+          </Picker> 
+        </View>
+      </View>
+      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
+        {ary.map(() => <ListItemWrap month={currentMonth} />)}
+      </List>
     </View>
   )
 }
-export default List
+export default RecordList
+
+const ListItemWrap = (props:any) => {
+  return (
+    <View>
+      <View className='summarybox'>
+        <View><Text className='month_text'>{props.month}</Text>月</View>
+        <View className='small_text'>提现¥500.00，充值215.00</View>
+      </View>
+      {Array(20).fill(0).map(each => <ListItem />)}
+    </View>
+  )
+}
