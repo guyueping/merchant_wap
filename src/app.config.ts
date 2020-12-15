@@ -1,5 +1,5 @@
 export default {
-  entryPagePath: 'pages/account/index',
+  // entryPagePath: 'pages/account/index',
   
   pages: [
     'pages/home/index',
