@@ -1,5 +1,6 @@
 export default {
   // entryPagePath: 'pages/account/index'
+  
   pages: [
     'pages/home/index',
     'pages/mine/index',
@@ -11,7 +12,8 @@ export default {
     'pages/order/index',
     'pages/afterSale/index',
     'pages/bill/index',
-    'pages/records/index'
+    'pages/records/index',
+    'pages/demos/index'
   ],
   appId: 'wx4a48efb72145fee2',
   tabBar: {
