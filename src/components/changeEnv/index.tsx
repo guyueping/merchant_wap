@@ -10,7 +10,6 @@ const envList = ['prod', 'pre', 'sit', 'test', 'dev'];
 const ChangeEnv = (IProps: IProps) => {
     const [value, setValue] = useState(() => {
         const envStr = getData('env') || 'prod';
-        console.log('envStr', envStr)
         return envList.indexOf(envStr)
     })
     const [disabled, setDisabled] = useState(true)
