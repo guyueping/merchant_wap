@@ -24,7 +24,7 @@ const List = (props: I_Scroll) => {
       onScrollToLower={props.onScrollToLower}
       onScroll={props.onScroll}
       refresherEnabled
-      refresherBackground='#FFFFFF'
+      refresherBackground='#F1F2F6'
       refresherDefaultStyle='none'
       // refresherTriggered={refresherTriggered}
       // onDragEnd={() => {console.log('onDragEnd')}}
@@ -37,9 +37,9 @@ const List = (props: I_Scroll) => {
     >
       <View className={styles.mainpagecontainer}>
         <BirdLoading />
-        {props.children}
-        <LoadMore showLoading={props.showLoadMore} />
       </View>
+      {props.children}
+      <LoadMore showLoading={props.showLoadMore} />
     </ScrollView>
   )
 }
