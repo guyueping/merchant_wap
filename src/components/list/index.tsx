@@ -11,12 +11,14 @@ interface I_Scroll {
   onScroll?: (e) => void;
   showLoadMore?: boolean;
   children?: any;
+  style?: any;
 }
 const List = (props: I_Scroll) => {
 
   return  (
-    <ScrollView 
+    <ScrollView
       className={styles.list_box}
+      style={props.style}
       refresherThreshold={0}
       scrollY 
       scrollWithAnimation 

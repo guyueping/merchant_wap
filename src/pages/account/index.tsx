@@ -88,7 +88,7 @@ const AccountList = () => {
           </Picker> 
         </View>
       </View>
-      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
+      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading} style={{flex: 1}}>
         {ary.map(() => <ListItemWrap month={currentMonth} />)}
       </List>
     </View>

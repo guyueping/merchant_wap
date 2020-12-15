@@ -1,11 +1,11 @@
 export default {
-  // entryPagePath: 'pages/demos/index',
+  entryPagePath: 'pages/account/index',
   
   pages: [
     'pages/home/index',
     'pages/mine/index',
     'pages/login/index',
-    'pages/list/index',
+    // 'pages/list/index',
     'pages/sale/index',
     'pages/account/index',
     'pages/task/index',
@@ -13,7 +13,7 @@ export default {
     'pages/afterSale/index',
     'pages/bill/index',
     'pages/records/index',
-    'pages/demos/index'
+    // 'pages/demos/index'
   ],
   appId: 'wx4a48efb72145fee2',
   tabBar: {

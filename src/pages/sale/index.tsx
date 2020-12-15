@@ -51,9 +51,9 @@ const SaleList = () => {
           <View className="numbox"><Text className="num">198</Text></View>
         </View>
       </View>
-      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
+      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading} style={{flex: 1}}>
         {/* <View className={'list'}> */}
-        {goodList.map(item => listItem(item))}
+          {goodList.map(item => listItem(item))}
         {/* </View> */}
       </List>
 
