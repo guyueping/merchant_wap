@@ -1,5 +1,5 @@
 export default {
-  // entryPagePath: 'pages/account/index',
+  // entryPagePath: 'pages/demos/index',
 
   pages: [
     'pages/home/index',
@@ -12,7 +12,8 @@ export default {
     'pages/order/index',
     'pages/afterSale/index',
     'pages/bill/index',
-    'pages/records/index'
+    'pages/records/index',
+    'pages/demos/index'
   ],
   tabBar: {
     list: [{
