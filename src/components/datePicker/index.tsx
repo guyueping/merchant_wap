@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { View, PickerView,  PickerViewColumn} from '@tarojs/components'
-import { AtFloatLayout } from 'taro-ui'
 import styles from './index.module.styl'
 import PopBottom from '@/components/popBottom'
 
@@ -17,7 +16,7 @@ const getDate = () => {
 }
 
 interface I_DatePicker{
-  children?: any;
+  children?: React.ReactNode;
   onCancel?: () => void;
   onConfirm?: (obj: any) => void;
   year?: number;

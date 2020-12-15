@@ -10,13 +10,14 @@ interface I_Scroll {
   onScrollToLower?: (e) => void;
   onScroll?: (e) => void;
   showLoadMore?: boolean;
-  children?: any;
-  style?: any;
+  children?: React.ReactNode;
+  style?: string | React.CSSProperties | undefined;
+  className?: string | undefined;
 }
 interface I_List_Layout{
-  style?: any;
-  className?: any;
-  children?: any;
+  style?: string | React.CSSProperties | undefined;
+  className?: string | undefined;
+  children?: React.ReactNode;
 }
 export const ListLayout = (props: I_List_Layout) => {
   return (
@@ -28,7 +29,7 @@ export const ListLayout = (props: I_List_Layout) => {
 const List = (props: I_Scroll) => {
   return  (
     <ScrollView
-      className={styles.list_box}
+      className={`${styles.list_box} ${props.className}`}
       style={props.style}
       refresherThreshold={0}
       scrollY 

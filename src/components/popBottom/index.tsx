@@ -4,7 +4,7 @@ import { AtFloatLayout } from 'taro-ui'
 import './index.styl'
 
 interface I_PopBottom{
-  children?: any;
+  children?: React.ReactNode;
   onCancel?: () => void;
   onConfirm?: () => void;
   show?:boolean;

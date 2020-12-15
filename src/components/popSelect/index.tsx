@@ -5,7 +5,7 @@ import './index.styl'
 
 
 interface I_PopBottom{
-  children?: any;
+  children?: React.ReactNode;
   onCancel?: () => void;
   onSelect?: (num: number, item?: string) => void;
   options?: Array<string>;

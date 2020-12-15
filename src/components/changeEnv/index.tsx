@@ -4,7 +4,7 @@ import { View, Picker } from '@tarojs/components'
 import { getData, setData } from '@utils/ypStore'
 
 interface IProps {
-    children: any
+    children: React.ReactNode
 }
 const envList = ['prod', 'pre', 'sit', 'test', 'dev'];
 const ChangeEnv = (IProps: IProps) => {

@@ -10,8 +10,8 @@ interface I_Status{
   imgUrl?: string;
   mainInfo?: string;
   moreInfo?: string;
-  className?: any;
-  style?: any;
+  className?: string | undefined;
+  style?: string | React.CSSProperties | undefined;
   isEmpty?: boolean;
 }
 

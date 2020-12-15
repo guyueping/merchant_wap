@@ -7,8 +7,8 @@ interface I_Header {
   title?: string;
   bgColor?: string;
   navUrl?: string;
-  className?: any;
-  style?: any;
+  className?: string | undefined;
+  style?: string | React.CSSProperties | undefined;
 }
 
 const Header = (props: I_Header) => {
