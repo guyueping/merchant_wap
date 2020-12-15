@@ -13,8 +13,19 @@ interface I_Scroll {
   children?: any;
   style?: any;
 }
+interface I_List_Layout{
+  style?: any;
+  className?: any;
+  children?: any;
+}
+export const ListLayout = (props: I_List_Layout) => {
+  return (
+    <View className={`${styles.list_layout_box} ${props.className}`} style={props.style}>
+      {props.children}
+    </View>
+  )
+}
 const List = (props: I_Scroll) => {
-
   return  (
     <ScrollView
       className={styles.list_box}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './index.styl'
 import { View, Text, Image } from '@tarojs/components'
-import List from '@/components/list'
+import List, { ListLayout } from '@/components/list'
 const SaleList = () => {
   const [showLoading, setShowLoading] = useState(false)
   const [goodList, setGoodList] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 20])
@@ -36,7 +36,7 @@ const SaleList = () => {
     )
   }
   return (
-    <View className={'content'}>
+    <ListLayout className={'content'}>
       <View className="top">
         <Text className="left">今日数据</Text>
         <View className="right">2020-12-01 16:09<View>??</View></View>
@@ -51,13 +51,13 @@ const SaleList = () => {
           <View className="numbox"><Text className="num">198</Text></View>
         </View>
       </View>
-      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading} style={{flex: 1}}>
+      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
         {/* <View className={'list'}> */}
           {goodList.map(item => listItem(item))}
         {/* </View> */}
       </List>
 
-    </View>
+    </ListLayout>
   )
 }
 export default SaleList

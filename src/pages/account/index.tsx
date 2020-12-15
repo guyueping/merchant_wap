@@ -3,7 +3,7 @@ import Taro, { useShareAppMessage, usePullDownRefresh, useReachBottom } from '@t
 import { View, Text, Picker, ScrollView } from '@tarojs/components'
 import './index.styl'
 import ListItem from './listItem/index'
-import List from '@/components/list'
+import List, { ListLayout } from '@/components/list'
 // import styles from './index.modules.styl'
 
 const typeAry = ['全部', '提现', '垫付还款']
@@ -75,7 +75,7 @@ const AccountList = () => {
 
 
   return  (
-    <View className='accountPage_box'>
+    <ListLayout className='accountPage_box'>
       <View className='condition_box flex_center_center_row'>
         <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
           <Picker mode='date' onChange={onDateChange} onCancel={dateCancel}>
@@ -88,10 +88,10 @@ const AccountList = () => {
           </Picker> 
         </View>
       </View>
-      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading} style={{flex: 1}}>
+      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
         {ary.map(() => <ListItemWrap month={currentMonth} />)}
       </List>
-    </View>
+    </ListLayout>
   )
 }
 export default AccountList
