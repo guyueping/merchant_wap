@@ -15,7 +15,11 @@ const IndexPage = () => {
   //   }, [])
 
   const handleGridEvent = (item: object, index: number) => {
-    navigateTo({ url: `/pages/${pageList[index]}/index` })
+    goTo(`/pages/${pageList[index]}/index`)
+  }
+
+  const goTo = (url: string) => {
+    navigateTo({ url })
   }
 
   const onScrollToUpper = () => {
@@ -58,7 +62,7 @@ const IndexPage = () => {
         <View className='topBox flex_center_center_column'>
           <Text className='withdraw_text'>可提现金额</Text>
           <Text className='withdraw_amount'>¥18,540.00</Text>
-          <Button className='detail_button'>查看详情</Button>
+          <Button className='detail_button' onClick={() => {goTo('/pages/withdraw/index')}}>查看详情</Button>
           <View className='amountbox flex_center_center_row'>
             <View className='sum_box flex_center_center_column'>
               <Text className='sum_money'>¥384.88</Text>
