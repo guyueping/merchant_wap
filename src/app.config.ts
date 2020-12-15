@@ -1,6 +1,5 @@
 export default {
-  // entryPagePath: 'pages/account/index',
-
+  // entryPagePath: 'pages/account/index'
   pages: [
     'pages/home/index',
     'pages/mine/index',
@@ -14,6 +13,7 @@ export default {
     'pages/bill/index',
     'pages/records/index'
   ],
+  appId: 'wx4a48efb72145fee2',
   tabBar: {
     list: [{
       'iconPath': 'assets/images/icon_home.png',
