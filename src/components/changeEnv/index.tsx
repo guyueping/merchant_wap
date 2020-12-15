@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import { View, Picker } from '@tarojs/components'
-import { getData, setData } from '@utils/ypStore'
+import { getData, setData } from '@/utils/ypStore'
 
 interface IProps {
     children: React.ReactNode

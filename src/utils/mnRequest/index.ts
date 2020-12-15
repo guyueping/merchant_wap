@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { getData } from '@utils/ypStore'
+import { getData } from '@/utils/ypStore'
 
 export type Type = 'web' | 'electron' | 'react-native' | 'miniapp' // type 决定 数据的储存方式
 export interface iParams {
