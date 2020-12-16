@@ -1,5 +1,5 @@
 export default {
-  entryPagePath: 'pages/task/index',
+  // entryPagePath: 'pages/task/index',
   
   pages: [
     'pages/home/index',
