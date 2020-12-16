@@ -3,15 +3,26 @@ import Taro, { useShareAppMessage, usePullDownRefresh, useReachBottom } from '@t
 import { View, Text, Picker, ScrollView } from '@tarojs/components'
 import './index.styl'
 import ListItem from './listItem/index'
-import List from '@/components/list'
+import List, { ListLayout } from '@/components/list'
+import DatePicker from '@/components/datePicker'
+import PopSelect from '@/components/popSelect'
 // import styles from './index.modules.styl'
-
+const getDate = () => {
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  return {year, month}
+}
 const typeAry = ['全部', '提现', '垫付还款']
 const ary = [12]
-const RecordList = () => {
+const Records = () => {
+  const {year, month} = getDate()
+
   const [dateSelectOpen, setDateSelectOpen] = useState(false)
   const [typeSelectOpen, setTypeSelectOpen] = useState(false)
-  const [selectedDate, setSelectedDate] = useState('2020年11月')
+  const [selectedYear, setSelectedYear] = useState(year)
+  const [selectedMonth, setSelectedMonth] = useState(month)
+  // const [selectedDate, setSelectedDate] = useState(`${year}年${month}月`)
   const [selectedType, setSelectedType] = useState(0)
   const [currentMonth, setCurrentMonth] = useState(12)
   const [showLoading, setShowLoading] = useState(false)
@@ -44,8 +55,10 @@ const RecordList = () => {
     setTypeSelectOpen(!typeSelectOpen)
   }
 
-  const onDateChange = e => {
-    setSelectedDate(e.detail.value)
+  const onDateConfirm = d => {
+    setSelectedYear(d.year)
+    setSelectedMonth(d.month)
+    // setSelectedDate(`${d.year}年${d.month}月`)
     setDateSelectOpen(false)
   }
 
@@ -53,8 +66,8 @@ const RecordList = () => {
     setDateSelectOpen(false)
   }
 
-  const onTypeChange = e => {
-    setSelectedType(e.detail.value * 1 || 0)
+  const onTypeSelect = (selectIndex: number, item: string) => {
+    setSelectedType(selectIndex || 0)
     setTypeSelectOpen(false)
   }
 
@@ -75,26 +88,26 @@ const RecordList = () => {
 
 
   return  (
-    <View className='recordPage_box'>
+    <ListLayout className='accountPage_box'>
       <View className='condition_box flex_center_center_row'>
         <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
-          <Picker mode='date' onChange={onDateChange} onCancel={dateCancel}>
-            {selectedDate}
-          </Picker> 
+          <DatePicker onConfirm={onDateConfirm} onCancel={dateCancel}>
+            {selectedYear}年{selectedMonth}月
+          </DatePicker>
         </View>
         <View className={`selection flex_center_center_row${typeSelectOpen ? ' selection_open' : ''}`} onClick={handleTypeClick}>
-          <Picker mode='selector' range={typeAry} onChange={onTypeChange} onCancel={typeCancel}>
+          <PopSelect options={typeAry} onCancel={typeCancel} onSelect={onTypeSelect}>
             {typeAry[selectedType]}
-          </Picker> 
+          </PopSelect>
         </View>
       </View>
       <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
         {ary.map(() => <ListItemWrap month={currentMonth} />)}
       </List>
-    </View>
+    </ListLayout>
   )
 }
-export default RecordList
+export default Records
 
 const ListItemWrap = (props:any) => {
   return (

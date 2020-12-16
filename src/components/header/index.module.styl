@@ -1,26 +1,34 @@
 .head_box
-  // height 70px
-  background-color #FF0000
   color #ffffff
   font-size 30px
   text-align center
   width 100%
-  // padding 50px 30px 30px 30px
-  // box-sizing border-box
   position fixed
-  top 0  
-  // .back_button
-  //   position absolute
-  //   left 0
-  //   bottom 2px
-  //   text-index 25px
-  //   box-sizing border-box
-  //   padding 28px 30px
-  //   &:before
-  //     content ''
-  //     width 18px
-  //     height 18px
-  //     border-left 4px solid #ffffff
-  //     border-top 4px solid #ffffff
-  //     display inline-block
-  //     transform rotate(-45deg)
+  top 0 
+  z-index 999
+.head_container
+  width 100%
+  height 100%
+  position relative
+  box-sizing border-box
+  padding-top 10px
+  .back_button
+    position absolute
+    left 0
+    box-sizing border-box
+    padding-left 30px
+    width 140px
+    height 100%
+    &:before
+      content ''
+      width 20px
+      height 40px
+      // border-left 4px solid #ffffff
+      // border-top 4px solid #ffffff
+      display inline-block
+      background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAoCAMAAADT08pnAAAAbFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8+T+BWAAAAI3RSTlMA/fpXYl2KWlRP9lE2EQgpIe/q493VzcS6r6SYfXBMQjAaeZY4GCQAAACiSURBVCjPtdHJDoMgFIVhHEpbi4LzPJX3f8d6WHIxDSaeBYvv35Bc5ppg7sUBd/ocaP11+KSPhYo4hycL8dH4SnyA5+RXWQ8vNuIdvJS2py28UsQbeL3bvtfwJrVdVfCWuCzhXWb7VsB74iKHD8zemsBH4otxTjwK4ZPjXAcHMyOLTIjYWXn6ldC/vP6Ux+3lc7nEXuV9uYiTwimbAndN4vkB7NQWjdsUod4AAAAASUVORK5CYII=')
+      background-repeat no-repeat
+      background-position center center
+      background-size 100%
+      margin-right 10px
+      // transform rotate(-45deg)

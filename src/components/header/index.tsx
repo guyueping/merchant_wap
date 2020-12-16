@@ -11,7 +11,7 @@ interface I_Header {
   style?: any;
 }
 
-const { statusBarHeight } = Taro.getSystemInfoSync()
+const headerHeightStyles = { height: 44, paddingTop: Taro.$statusBarHeight }
 
 const Header = (props: I_Header) => {
 
@@ -21,11 +21,16 @@ const Header = (props: I_Header) => {
     // navigateTo({ url: props.navUrl })
   }
   return (
-    <View className={`${styles.head_box} flex_center_center_row`} style={{...props.style, height: 44, paddingTop: statusBarHeight }}>
-      <View className={styles.back_button} onClick={handleBack}>返回</View>
-      <Text>{props.title || ''}</Text>
+    <View className={styles.head_box} style={{...props.style, ...headerHeightStyles }}>
+      <View className={`${styles.head_container} flex_center_center_row`}>
+        <View className={`${styles.back_button} flex_center_start_row`} onClick={handleBack}>返回</View>
+        <Text>{props.title || ''}</Text>
+      </View>
     </View>
   )
 }
 
 export default Header
+
+
+export const HeaderShadow = () => <View style={headerHeightStyles}></View>

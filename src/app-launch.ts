@@ -3,7 +3,14 @@ import Taro from '@tarojs/taro';
 // import Utils from '@/utils';
 
 export default function appLaunch(){
-  console.log('appLaunch>>>>')
+  const systemInfo = Taro.getSystemInfoSync()
+  console.log('systemInfo>>', systemInfo)
+  Taro.$statusBarHeight = systemInfo.statusBarHeight
+  
+    // Taro.getSystemInfo({}).then(res => {
+    //   console.log('res>>>', res)
+    // })
+    // console.log(Taro.getSystemInfoSync())
   // /**
   //  * 自动升级处理
   //  */

@@ -1,122 +1,60 @@
-import React, { useState, useEffect } from 'react'
-import Taro, { useShareAppMessage, usePullDownRefresh, useReachBottom } from '@tarojs/taro'
-import { View, Text, Picker, ScrollView } from '@tarojs/components'
-import './index.styl'
-import ListItem from './listItem/index'
-import List, { ListLayout } from '@/components/list'
-import DatePicker from '@/components/datePicker'
-import PopSelect from '@/components/popSelect'
-// import styles from './index.modules.styl'
-const getDate = () => {
-  const date = new Date()
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  return {year, month}
-}
-const typeAry = ['全部', '提现', '垫付还款']
-const ary = [12]
-const AccountList = () => {
-  const {year, month} = getDate()
+import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import styles from './index.module.styl'
+import Header, { HeaderShadow } from '@/components/header'
+import { AtButton } from 'taro-ui'
+// import Toast from '@/components/toast'
+import Modal from '@/components/modal'
 
-  const [dateSelectOpen, setDateSelectOpen] = useState(false)
-  const [typeSelectOpen, setTypeSelectOpen] = useState(false)
-  const [selectedYear, setSelectedYear] = useState(year)
-  const [selectedMonth, setSelectedMonth] = useState(month)
-  // const [selectedDate, setSelectedDate] = useState(`${year}年${month}月`)
-  const [selectedType, setSelectedType] = useState(0)
-  const [currentMonth, setCurrentMonth] = useState(12)
-  const [showLoading, setShowLoading] = useState(false)
-
-
-  useShareAppMessage(res => {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
-    return {
-      title: '自定义转发标题',
-      path: '/page/user?id=123'
-    }
-  })
-
-  // usePullDownRefresh(() => {
-  //   console.log('onPullDownRefresh')
-  // })
+const Account = () => {
+  const [showModal, setShowModal] = useState(false)
   
-  // useReachBottom(() => {
-  //   console.log('onPullDownRefresh')
-  // })
-
-  const handleDateClick = () => {
-    setDateSelectOpen(!dateSelectOpen)
+  const handleCancel = () => {
+    console.log('handleCancel')
+    setShowModal(false)
   }
 
-  const handleTypeClick = () => {
-    setTypeSelectOpen(!typeSelectOpen)
+  const handleConfirm = () => {
+    console.log('handleConfirm')
+    setShowModal(false)
   }
 
-  const onDateConfirm = d => {
-    setSelectedYear(d.year)
-    setSelectedMonth(d.month)
-    // setSelectedDate(`${d.year}年${d.month}月`)
-    setDateSelectOpen(false)
+  const handleWithdraw = () => {
+    setShowModal(true)
   }
-
-  const dateCancel = () => {
-    setDateSelectOpen(false)
-  }
-
-  const onTypeSelect = (selectIndex: number, item: string) => {
-    setSelectedType(selectIndex || 0)
-    setTypeSelectOpen(false)
-  }
-
-  const typeCancel = () => {
-    setTypeSelectOpen(false)
-  }
-
-  const onScrollToLower = () => {
-    if(currentMonth !== 1) {
-      setShowLoading(true)
-      setTimeout(() => {
-        setCurrentMonth(currentMonth - 1)
-        ary.push(currentMonth - 1)
-        setShowLoading(false)
-      }, 1000)
-    }
-  }
-
 
   return  (
-    <ListLayout className='accountPage_box'>
-      <View className='condition_box flex_center_center_row'>
-        <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
-          <DatePicker onConfirm={onDateConfirm} onCancel={dateCancel}>
-            {selectedYear}年{selectedMonth}月
-          </DatePicker>
-        </View>
-        <View className={`selection flex_center_center_row${typeSelectOpen ? ' selection_open' : ''}`} onClick={handleTypeClick}>
-          <PopSelect options={typeAry} onCancel={typeCancel} onSelect={onTypeSelect}>
-            {typeAry[selectedType]}
-          </PopSelect>
+    <View className={styles.withdraw_page_box}>
+      <View className={styles.top_box}>
+        <Header title='账户资金' />
+        <HeaderShadow />
+        <View className='flex_center_center_column'>
+          <View className={styles.can_text}>可提现金额</View>
+          <View className={styles.amount_txt}>¥18,540.00</View>
+          <View className={`${styles.froze_txt} flex_center_center_row`}>已冻结¥100.00</View>
         </View>
       </View>
-      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
-        {ary.map(() => <ListItemWrap month={currentMonth} />)}
-      </List>
-    </ListLayout>
-  )
-}
-export default AccountList
-
-const ListItemWrap = (props:any) => {
-  return (
-    <View>
-      <View className='summarybox'>
-        <View><Text className='month_text'>{props.month}</Text>月</View>
-        <View className='small_text'>提现¥500.00，充值215.00</View>
+      <View className={styles.button_box}>
+        <AtButton className={styles.widthdraw_button} onClick={handleWithdraw}>提现</AtButton>
       </View>
-      {Array(20).fill(0).map(each => <ListItem />)}
+      <View className={`${styles.button_box} flex_center_between_row`}>
+        <AtButton className={styles.widthdraw_button}>提现</AtButton>
+        <AtButton className={styles.widthdraw_button}>垫付还款</AtButton>
+      </View>
+      {/* <Toast showToast={true} content='阿双方的是非得失发生的范德萨发' /> */}
+      <Modal show={showModal} content='请先补齐平台垫付资金，点击充值进行补齐' onCancel={handleCancel} onConfirm={handleConfirm}/>
+      {/* <AtModal 
+        isOpened
+        // title='标题'
+        cancelText='取消'
+        confirmText='确认'
+        // onClose={ this.handleClose }
+        onCancel={handleCancel}
+        onConfirm={handleConfirm}
+        content='请先补齐平台垫付资金，点击充值进行补齐'
+      /> */}
     </View>
   )
 }
+export default Account

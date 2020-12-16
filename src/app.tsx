@@ -13,10 +13,6 @@ import appLaunch from './app-launch'
 class App extends Component {
   componentDidMount () {
     appLaunch()
-    // Taro.getSystemInfo({}).then(res => {
-    //   console.log('res>>>', res)
-    // })
-    // console.log(Taro.getSystemInfoSync())
   }
 
   componentDidShow () {}
