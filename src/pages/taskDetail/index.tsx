@@ -21,16 +21,24 @@ const Taskd = () => {
 
 
   const onScrollToLower = () => {
-    console.log(">>>")
     setLoading(true)
+    const list: any = goodList
+    setTimeout(() => {
+      for (let i = 0; i <= 9; i++) {
+        list.push(goodList.length + 1)
+      }
+      console.log(">>>", list.length)
+      setGoodList(list)
+      setLoading(false)
+    }, 1000)
 
   }
   const listItem = (it) => {
     return (
       <View className={styles.list_item}>
-        {/* <Image className={styles.img}
+        <Image className={styles.img}
           src='https://camo.githubusercontent.com/3e1b76e514b895760055987f164ce6c95935a3aa/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f6d74642f686f6d652f6c6f676f2d3278313531333833373932363730372e706e67'
-        /> */}
+        />
         <View className={styles.right}>
           <View className={styles.head}>汉釜宫彩虹芝士夹心年糕（南瓜紫薯鹭明雪花培根  500g/袋</View>
           <View className={styles.bottom}>
