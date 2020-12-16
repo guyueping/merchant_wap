@@ -66,3 +66,7 @@ export const showMsg = (msg: string) => {
 export const moneyFormat = (num: number = 0) => {
   return (num.toString().indexOf ('.') !== -1) ? num.toLocaleString() : num.toFixed(2).replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
 }
+//拉下刷新
+export const pullDownReload = (e: any, refresh: () => void) => {
+  refresh instanceof Function && e.currentTarget.offsetTop > 45 && refresh()
+}

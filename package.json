@@ -55,20 +55,20 @@
     "taro-ui": "^3.0.0-alpha.3"
   },
   "devDependencies": {
-    "@types/webpack-env": "^1.13.6",
-    "@types/react": "^16.0.0",
-    "@tarojs/mini-runner": "3.0.18",
     "@babel/core": "^7.8.0",
+    "@tarojs/mini-runner": "^3.0.18",
     "@tarojs/webpack-runner": "3.0.18",
+    "@types/react": "^16.0.0",
+    "@types/webpack-env": "^1.13.6",
+    "@typescript-eslint/eslint-plugin": "^2.x",
+    "@typescript-eslint/parser": "^2.x",
     "babel-preset-taro": "3.0.18",
-    "eslint-config-taro": "3.0.18",
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.8.2",
+    "eslint-config-taro": "3.0.18",
     "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^1.6.1",
     "stylelint": "9.3.0",
-    "@typescript-eslint/parser": "^2.x",
-    "@typescript-eslint/eslint-plugin": "^2.x",
     "typescript": "^3.7.0"
   }
 }
