@@ -1,6 +1,6 @@
 export default {
   // entryPagePath: 'pages/withdraw/index',
-  
+
   pages: [
     'pages/home/index',
     'pages/mine/index',
@@ -9,12 +9,13 @@ export default {
     'pages/sale/index',
     'pages/account/index',
     'pages/task/index',
+    'pages/taskDetail/index',
     'pages/order/index',
     'pages/order/orderDetail/index',
     'pages/afterSale/index',
     'pages/bill/index',
     'pages/records/index',
-    'pages/withdraw/index'
+    'pages/withdraw/index',
     // 'pages/demos/index'
   ],
   appId: 'wx4a48efb72145fee2',

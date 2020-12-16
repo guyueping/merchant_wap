@@ -62,6 +62,18 @@
         {
           "name": "pages/sale/index",
           "pathName": "pages/sale/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/task/index",
+          "pathName": "pages/task/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/taskDetail/index",
+          "pathName": "pages/taskDetail/index",
           "scene": null
         }
       ]
