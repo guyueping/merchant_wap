@@ -3,9 +3,10 @@ import { View, Text } from '@tarojs/components'
 import Taro, { navigateTo } from '@tarojs/taro'
 import List, { ListLayout } from '@/components/list'
 import styles from './index.module.styl'
+
 const Task = () => {
 
-  const [datas, setDatas] = useState([])
+  const [datas, setDatas] = useState<Array<inner>>([])
   const [goodlist, setGoodList] = useState([])
   const [loading, setLoading] = useState(false)
   interface inner {
@@ -70,7 +71,7 @@ const Task = () => {
   const onScrollToLower = () => {
     setLoading(true)
     setTimeout(() => {
-      let l: any = datas
+      let l: Array<inner> = datas
       for (let i = 0; i <= 9; i++) {
         l.push({
           time: `2020-${i}-27`,

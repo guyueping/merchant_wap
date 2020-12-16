@@ -15,7 +15,7 @@ const Taskd = () => {
     list: []
   }
   useEffect(() => {
-    const l: any = [1, 2, 3, 4]
+    const l: any = [1, 2, 3, 4, 5, 6, 7]
     setGoodList(l)
   }, [])
 
@@ -24,7 +24,7 @@ const Taskd = () => {
     setLoading(true)
     const list: any = goodList
     setTimeout(() => {
-      for (let i = 0; i <= 9; i++) {
+      for (let i = 0; i <= 2; i++) {
         list.push(goodList.length + 1)
       }
       console.log(">>>", list.length)
