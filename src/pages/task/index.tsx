@@ -39,8 +39,10 @@ const Task = () => {
     setDatas(l)
   }, [])
   useEffect(() => {
-    console.log(">>>change")
-    filterData(datas)
+    if (datas.length > 0) {
+      console.log(">>>change")
+      filterData(datas)
+    }
   }, [datas])
   const filterData = (datas) => {
     console.log(">>><<<<<datas", datas)
