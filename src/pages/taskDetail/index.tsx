@@ -43,7 +43,6 @@ const Taskd = () => {
           <View className={styles.head}>汉釜宫彩虹芝士夹心年糕（南瓜紫薯鹭明雪花培根  500g/袋</View>
           <View className={styles.bottom}>
             <Text>已售<Text className={styles.strong}>{it}</Text>份</Text>
-            <Text>剩余：<Text className={`${styles.strong} ${styles.blue_font}`}>20</Text></Text>
           </View>
         </View>
       </View>
