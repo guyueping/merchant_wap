@@ -84,29 +84,32 @@ const Order = () => {
 
   return (
     <ListLayout className='orderPage'>
-      <AtSearchBar
-        showActionButton
-        value={searchValue}
-        onChange={onChangeSearchValue}
-        onActionClick={handleSearchValue}
-        placeholder='请输入手机号/订单编号'
-      />
+      <View className='searchCondition'>
+        <AtSearchBar
+          showActionButton
+          value={searchValue}
+          onChange={onChangeSearchValue}
+          onActionClick={handleSearchValue}
+          placeholder='请输入手机号/订单编号'
+        />
 
-      {
-        searchStatus ? 
-          <View className='condition_box flex_center_center_row'>
-            <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
-              <DatePicker mode='date' onConfirm={onDateChange} onCancel={dateCancel}>
-                {selectedYear}年{selectedMonth}月
-              </DatePicker> 
-            </View>
-            <View className={`selection flex_center_center_row${typeSelectOpen ? ' selection_open' : ''}`} onClick={handleTypeClick}>
-              <PopSelect options={typeAry} onSelect={onTypeChange} onCancel={typeCancel}>
-                {typeAry[selectedType]}
-              </PopSelect> 
-            </View>
-          </View> : null
-      }
+        {
+          searchStatus ? 
+            <View className='condition_box flex_center_center_row'>
+              <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
+                <DatePicker mode='date' onConfirm={onDateChange} onCancel={dateCancel}>
+                  {selectedYear}年{selectedMonth}月
+                </DatePicker> 
+              </View>
+              <View className={`selection flex_center_center_row${typeSelectOpen ? ' selection_open' : ''}`} onClick={handleTypeClick}>
+                <PopSelect options={typeAry} onSelect={onTypeChange} onCancel={typeCancel}>
+                  {typeAry[selectedType]}
+                </PopSelect> 
+              </View>
+            </View> : null
+        }
+      </View>
+      
       
 
       <List 
