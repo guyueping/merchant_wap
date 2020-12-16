@@ -11,6 +11,8 @@ interface I_Header {
   style?: any;
 }
 
+const { statusBarHeight } = Taro.getSystemInfoSync()
+
 const Header = (props: I_Header) => {
 
   const handleBack = () => {
@@ -19,7 +21,7 @@ const Header = (props: I_Header) => {
     // navigateTo({ url: props.navUrl })
   }
   return (
-    <View className={`${styles.head_box} flex_center_center_row`} style={props.style}>
+    <View className={`${styles.head_box} flex_center_center_row`} style={{...props.style, height: 36, paddingTop: statusBarHeight }}>
       <View className={styles.back_button} onClick={handleBack}>返回</View>
       <Text>{props.title || ''}</Text>
     </View>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { View, Picker } from '@tarojs/components'
 import { AtList, AtListItem, AtSearchBar } from "taro-ui"
+import List, { ListLayout } from '@/components/list'
 import DatePicker from '@/components/datePicker'
 import PopSelect from '@/components/popSelect'
-import List, { ListLayout } from '@/components/list'
 import { OrderStatus as typeAry, orderData } from './constant'
 import ListItem from './components/listItem'
 import './index.styl'
