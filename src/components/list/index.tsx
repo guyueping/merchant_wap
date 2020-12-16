@@ -9,6 +9,7 @@ interface I_Scroll {
   onScrollToUpper?: (e) => void;
   onScrollToLower?: (e) => void;
   onScroll?: (e) => void;
+  onRefresherRefresh?: (e) => void;
   showLoadMore?: boolean;
   children?: React.ReactNode;
   style?: string | React.CSSProperties | undefined;
@@ -38,6 +39,7 @@ const List = (props: I_Scroll) => {
       onScrollToLower={props.onScrollToLower}
       onScroll={props.onScroll}
       refresherEnabled
+      onRefresherRefresh={props.onRefresherRefresh}
       refresherBackground='#F1F2F6'
       refresherDefaultStyle='none'
       // refresherTriggered={refresherTriggered}
