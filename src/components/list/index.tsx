@@ -34,7 +34,6 @@ const List = (props: I_Scroll) => {
   const [refresherTriggered, setRefresherTriggered] = useState(false)
 
   const onRefresherRefresh = (e) => {
-    console.log(e)
     new Promise((resolve, reject) => {
       setRefresherTriggered(true)
       props.onRefresherRefresh && props.onRefresherRefresh(e)
