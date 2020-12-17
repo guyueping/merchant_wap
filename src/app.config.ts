@@ -1,6 +1,6 @@
 export default {
   // entryPagePath: 'pages/task/index',
-  
+
   pages: [
     'pages/home/index',
     'pages/mine/index',

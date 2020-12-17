@@ -15,7 +15,7 @@ const Taskd = () => {
     list: []
   }
   useEffect(() => {
-    const l: any = [1, 2, 3, 4, 5, 6, 7]
+    const l: any = [1, 2, 3, 4]
     setGoodList(l)
   }, [])
 
