@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, Input } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import Header from '@/components/header'
 import { AtButton } from 'taro-ui'
 import './index.styl'
 

@@ -21,6 +21,7 @@ interface I_List_Layout{
   children?: React.ReactNode;
 }
 export const ListLayout = (props: I_List_Layout) => {
+
   return (
     <View className={`${styles.list_layout_box} ${props.className}`} style={props.style}>
       {props.children}
@@ -28,8 +29,22 @@ export const ListLayout = (props: I_List_Layout) => {
   )
 }
 
-const bool = false
+
 const List = (props: I_Scroll) => {
+  const [refresherTriggered, setRefresherTriggered] = useState(false)
+
+  const onRefresherRefresh = (e) => {
+    console.log(e)
+    new Promise((resolve, reject) => {
+      setRefresherTriggered(true)
+      props.onRefresherRefresh(e)
+      resolve()
+    }).then(() => {
+      setRefresherTriggered(false)
+    })
+  }
+
+
   return  (
     <ScrollView
       className={`${styles.list_box} ${props.className}`}
@@ -41,17 +56,21 @@ const List = (props: I_Scroll) => {
       onScrollToLower={props.onScrollToLower}
       onScroll={props.onScroll}
       refresherEnabled
-      onRefresherRefresh={props.onRefresherRefresh}
+      // onRefresherRefresh={props.onRefresherRefresh}
       refresherBackground='#F1F2F6'
       refresherDefaultStyle='none'
-      refresherTriggered={bool}
+      refresherEnabled={true}
+      refresherTriggered={refresherTriggered}
+      onRefresherRefresh={onRefresherRefresh}
+      // refresherThreshold={45}
       // onDragEnd={() => {console.log('onDragEnd')}}
       // onTransitionEnd={() => {console.log('onTransitionEnd')}}
       // onDragStart={() => {console.log('onDragStart')}}
       // onRefresherRestore={() => {console.log('onRefresherRestore')}}
       // onDragging={() => {console.log('onDragging')}}
       // onLongPress={() => {console.log('onLongPress')}}
-      // onRefresherPulling={onRefresherPulling}
+      // onRefresherPulling={() => { console.log('onRefresherPulling')}}
+      // onRefresherRestore={(e) => { onRefresherRestore(e)}}
     >
       <View className={styles.mainpagecontainer}>
         <BirdLoading />
