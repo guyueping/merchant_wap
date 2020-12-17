@@ -14,6 +14,10 @@ const IndexPage = () => {
   //     console.log('process>>', process.env.NODE_ENV)
   //   }, [])
 
+  // useEffect(() => {
+  //   goTo('/pages/login/index')
+  // }, [])
+
   const handleGridEvent = (item: object, index: number) => {
     goTo(`/pages/${pageList[index]}/index`)
   }

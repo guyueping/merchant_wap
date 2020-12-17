@@ -1,9 +1,10 @@
 export default {
-  // entryPagePath: 'pages/task/index',
+  // entryPagePath: 'pages/mine/accountDetail/index',
   
   pages: [
     'pages/home/index',
     'pages/mine/index',
+    'pages/mine/accountDetail/index',
     'pages/login/index',
     // 'pages/list/index',
     'pages/sale/index',
@@ -15,6 +16,9 @@ export default {
     'pages/afterSale/index',
     'pages/bill/index',
     'pages/records/index',
+    'pages/webView/index',
+    'pages/forgetPwd/index',
+    'pages/resetPwd/index'
     // 'pages/withdraw/index'
     // 'pages/demos/index'
   ],
