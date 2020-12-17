@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text } from '@tarojs/components'
 import './index.styl'
-import { AtIcon } from 'taro-ui'
+import { AtActivityIndicator } from 'taro-ui'
 
 interface I_LoadMore{
   showLoading?: boolean;
@@ -14,11 +14,12 @@ const LoadMore = (props: I_LoadMore) => {
       {/* <AtIcon value='loading-3' size='18' color='#6E9AE5' className='loading_icon'></AtIcon>
       <Text className='info_txt'>Loading</Text> */}
       {props.showNoData ? (
-        <Text className='info_txt'>没有更多数据</Text>
+        <Text className='info_txt'>没有更多了</Text>
       ) : (
         <View>
-          <AtIcon value='loading-3' size='18' color='#6E9AE5' className='loading_icon'></AtIcon>
-          <Text className='info_txt'>Loading</Text>
+          <AtActivityIndicator size={28} color='#6E9AE5' content='加载中...'></AtActivityIndicator>
+          {/* <AtIcon value='loading-3' size='18' color='#6E9AE5' className='loading_icon'></AtIcon>
+          <Text className='info_txt'>加载中...</Text> */}
         </View>
       )}
     </View>

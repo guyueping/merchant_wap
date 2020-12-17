@@ -4,7 +4,7 @@ import { View, Text, Picker, ScrollView } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
 import styles from './index.module.styl'
 
-const Item = (props) => {
+const ListItem = (props) => {
 	const { item1 } = props
 
 	const gotoDetail = () => {
@@ -49,7 +49,7 @@ const ListItemWrap = (props:any) => {
 					<Text className={styles.month_text}>{item.date}</Text>
 					<Text>{`合计：${item.sum}份`}</Text>
       </View>
-      {item.children.map(item1 => <Item item1={item1}/>)}
+      {item.children.length && item.children.map(item1 => <ListItem item1={item1}/>)}
     </View>
   )
 }

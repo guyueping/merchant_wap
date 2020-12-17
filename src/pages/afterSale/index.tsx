@@ -3,6 +3,7 @@ import { View } from '@tarojs/components'
 import List, { ListLayout } from '@/components/list'
 import DatePicker from '@/components/datePicker'
 import PopSelect from '@/components/popSelect'
+import SearchInput from '@/components/searchInput'
 import { AtSearchBar } from "taro-ui"
 import ListItem from './components/listItem'
 import { OrderStatus as typeAry, orderData } from './constant' 
@@ -82,13 +83,15 @@ const AfterSale = () => {
 
   return  (
     <ListLayout className='afterSalePage'>
-      <AtSearchBar
-        showActionButton
-        value={searchValue}
-        onChange={onChangeSearchValue}
-        onActionClick={handleSearchValue}
-        placeholder='请输入订单号/商品名称'
-      />
+      <View style={{backgroundColor: '#fff',}}>
+        <SearchInput
+          placeholder='请输入订单号/商品名称'
+          placeholderStyle='color:#ccc;font-size:13px'
+          onChange={onChangeSearchValue}
+          onConfirm={handleSearchValue}
+          onActionClick={handleSearchValue}
+        />
+      </View>
 
       {
         searchStatus ? 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import { Provider } from 'react-redux'
 import { View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 
 // import configStore from './store'
 import 'taro-ui/dist/style/index.scss' 

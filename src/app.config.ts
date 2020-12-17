@@ -1,5 +1,5 @@
 export default {
-  entryPagePath: 'pages/bill/index',
+  // entryPagePath: 'pages/order/index',
   
   pages: [
     'pages/home/index',
@@ -9,13 +9,14 @@ export default {
     'pages/sale/index',
     'pages/account/index',
     'pages/task/index',
+    'pages/taskDetail/index',
     'pages/order/index',
     'pages/order/orderDetail/index',
     'pages/afterSale/index',
     'pages/afterSale/afterSaleDetail/index',
     'pages/bill/index',
     'pages/records/index',
-    'pages/withdraw/index'
+    // 'pages/withdraw/index'
     // 'pages/demos/index'
   ],
   appId: 'wx4a48efb72145fee2',

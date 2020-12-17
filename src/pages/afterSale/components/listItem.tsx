@@ -4,7 +4,7 @@ import { View, Text } from '@tarojs/components'
 import ImgCmp from '@/components/ypImg'
 import styles from './index.module.styl'
 
-const Item = (props) => {
+const ListItem = (props) => {
 	const { item1 } = props
 
 	const gotoDetail = () => {
@@ -49,7 +49,7 @@ const ListItemWrap = (props:any) => {
       <View className={`flex_center_between_row ${styles.listItemTite}`}>
 					<Text className={styles.month_text}>{item.date}</Text>
       </View>
-      {item.children.map(item1 => <Item item1={item1}/>)}
+      {item.children?.length && item.children.map(item1 => <ListItem item1={item1}/>)}
     </View>
   )
 }

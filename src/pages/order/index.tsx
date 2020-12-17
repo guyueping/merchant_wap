@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
-import { AtSearchBar } from "taro-ui"
+import List, { ListLayout } from '@/components/list'
 import DatePicker from '@/components/datePicker'
 import PopSelect from '@/components/popSelect'
-import List, { ListLayout } from '@/components/list'
+import SearchInput from '@/components/searchInput'
 import { OrderStatus as typeAry, orderData } from './constant'
 import ListItem from './components/listItem'
 import './index.styl'
+import { AtInput } from 'taro-ui'
 
 const getDate = () => {
   const date = new Date()
@@ -43,12 +44,12 @@ const Order = () => {
   }
 
   const onChangeSearchValue = (v) => {
-    console.log(v, 'change')
+    // console.log(v, 'change')
     setSearchValue(v)
   }
 
-  const handleSearchValue = () => {
-
+  const handleSearchValue = (v) => {
+    console.log(v,'vvvvv')
   }
 
   const handleDateClick = () => {
@@ -84,14 +85,16 @@ const Order = () => {
 
   return (
     <ListLayout className='orderPage'>
-        <AtSearchBar
-          showActionButton
-          value={searchValue}
-          onChange={onChangeSearchValue}
-          onActionClick={handleSearchValue}
+      <View style={{backgroundColor: '#fff',}}>
+        <SearchInput
           placeholder='请输入手机号/订单编号'
+          placeholderStyle='color:#ccc;font-size:13px'
+          onChange={onChangeSearchValue}
+          onConfirm={handleSearchValue}
+          onActionClick={handleSearchValue}
         />
-
+      </View>
+        
         {
           searchStatus ? 
             <View className='condition_box flex_center_center_row'>
