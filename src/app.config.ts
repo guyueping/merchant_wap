@@ -4,19 +4,23 @@ export default {
   pages: [
     'pages/home/index',
     'pages/mine/index',
+    'pages/mine/accountDetail/index',
     'pages/login/index',
     // 'pages/list/index',
     'pages/sale/index',
     'pages/account/index',
     'pages/task/index',
-    'pages/taskDetail/index',
+    'pages/task/taskDetail/index',
     'pages/order/index',
     'pages/order/orderDetail/index',
     'pages/afterSale/index',
     'pages/afterSale/afterSaleDetail/index',
     'pages/bill/index',
     'pages/records/index',
-    // 'pages/withdraw/index'
+    'pages/webView/index',
+    'pages/forgetPwd/index',
+    'pages/resetPwd/index',
+    'pages/withdraw/index'
     // 'pages/demos/index'
   ],
   appId: 'wx4a48efb72145fee2',

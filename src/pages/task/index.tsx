@@ -107,7 +107,7 @@ const Task = () => {
     }, 1000)
   }
   const goDtail = () => {
-    navigateTo({ url: '/pages/taskDetail/index' })
+    navigateTo({ url: '/pages/task/taskDetail/index' })
   }
   return (
     <ListLayout className={styles.content}>
