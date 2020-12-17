@@ -34,6 +34,27 @@ const Task = () => {
       {
         time: '2020-11-30',
         num: 30,
+      }, {
+        time: '2020-11-30',
+        num: 30,
+      },
+      {
+        time: '2020-11-30',
+        num: 30,
+      },
+      {
+        time: '2020-11-30',
+        num: 30,
+      },
+      {
+        time: '2020-11-30',
+        num: 30,
+      }, {
+        time: '2020-11-30',
+        num: 30,
+      }, {
+        time: '2020-11-30',
+        num: 30,
       }
     ]
     setDatas(l)
@@ -71,19 +92,19 @@ const Task = () => {
     setGoodList(l)
   }
   const onScrollToLower = () => {
-    // setLoading(true)
-    // setTimeout(() => {
-    //   let l: Array<inner> = datas
-    //   for (let i = 0; i <= 9; i++) {
-    //     l.push({
-    //       time: `2020-${i}-27`,
-    //       num: 20,
-    //     })
-    //   }
-    //   setDatas(l)
-    //   filterData(l)
-    //   setLoading(false)
-    // }, 1000)
+    setLoading(true)
+    setTimeout(() => {
+      let l: Array<inner> = datas
+      for (let i = 0; i <= 9; i++) {
+        l.push({
+          time: `2020-${i}-27`,
+          num: 20,
+        })
+      }
+      setDatas(l)
+      filterData(l)
+      setLoading(false)
+    }, 1000)
   }
   const goDtail = () => {
     navigateTo({ url: '/pages/taskDetail/index' })
