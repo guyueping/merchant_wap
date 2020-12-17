@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import styles from './index.module.styl'
-import Header, { HeaderShadow } from '@/components/header'
+import Header from '@/components/header'
 import { AtButton } from 'taro-ui'
 // import Toast from '@/components/toast'
 import Modal from '@/components/modal'
@@ -28,7 +28,6 @@ const Account = () => {
     <View className={styles.withdraw_page_box}>
       <View className={styles.top_box}>
         <Header title='账户资金' />
-        <HeaderShadow />
         <View className='flex_center_center_column'>
           <View className={styles.can_text}>可提现金额</View>
           <View className={styles.amount_txt}>¥18,540.00</View>

@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { AtButton, AtList, AtListItem } from 'taro-ui'
 import './index.styl'
 import iconHelp from '@/images/icon_help.png'
 import iconOpinion from '@/images/icon_opinion.png'
 import iconAvatar from '@/images/icon_avatar.png'
+import Modal from '@/components/modal'
 
 const Mine = () => {
+  const [showModal, setShowModal] = useState(false)
+  const handleCancel = () => {
+    console.log('handleCancel')
+    setShowModal(false)
+  }
+
+  const handleConfirm = () => {
+    console.log('handleConfirm')
+    setShowModal(false)
+    Taro.navigateTo({ url: '/pages/login/index' })
+  }
+
+  const handleQuit = () => {
+    setShowModal(true)
+  }
   
   return  (
     <View className='minePage_box'>
@@ -31,7 +48,8 @@ const Mine = () => {
           thumb={iconOpinion}
         />
       </AtList>
-      <AtButton className='quit_button'>退出登录</AtButton>
+      <AtButton className='quit_button' onClick={handleQuit}>退出登录</AtButton>
+      <Modal show={showModal} content='确定要退出系统吗' onCancel={handleCancel} onConfirm={handleConfirm} />
     </View>
   )
 }
