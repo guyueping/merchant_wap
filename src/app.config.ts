@@ -10,7 +10,7 @@ export default {
     'pages/sale/index',
     'pages/account/index',
     'pages/task/index',
-    'pages/taskDetail/index',
+    'pages/task/taskDetail/index',
     'pages/order/index',
     'pages/order/orderDetail/index',
     'pages/afterSale/index',
