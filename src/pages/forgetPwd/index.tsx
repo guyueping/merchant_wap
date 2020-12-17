@@ -20,7 +20,7 @@ const ForgetPwd = () => {
           <View className='verifyCode_btn'>获取验证码</View>
         </View>
       </View>
-      <AtButton className='confirm_button'>下一步</AtButton>
+      <AtButton className='confirm_button' onClick={() => {Taro.navigateTo({url: '/pages/resetPwd/index'})}}>下一步</AtButton>
     </View>
   )
 }

@@ -34,6 +34,7 @@ const Mine = () => {
           note='188****6596'
           arrow='right'
           thumb={iconAvatar}
+          onClick={() => {Taro.navigateTo({url: '/pages/mine/accountDetail/index'})}}
         />
       </AtList>
       <AtList className='items_box'>

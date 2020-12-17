@@ -28,7 +28,7 @@ const ResetPwd = () => {
       <View className='error_msg'>
         <View className='at-icon at-icon-alert-circle err_icon'>
         </View>密码输入不一致，请重试</View>
-      <AtButton className='confirm_button'>确定</AtButton>
+      <AtButton className='confirm_button' onClick={() => {Taro.redirectTo({url: '/pages/login/index'})}}>确定</AtButton>
     </View>
   )
 }
