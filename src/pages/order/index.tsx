@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, Picker } from '@tarojs/components'
-import { AtList, AtListItem, AtSearchBar } from "taro-ui"
+import { View } from '@tarojs/components'
+import { AtSearchBar } from "taro-ui"
 import DatePicker from '@/components/datePicker'
 import PopSelect from '@/components/popSelect'
 import List, { ListLayout } from '@/components/list'
@@ -84,7 +84,6 @@ const Order = () => {
 
   return (
     <ListLayout className='orderPage'>
-      <View className='searchCondition'>
         <AtSearchBar
           showActionButton
           value={searchValue}
@@ -108,9 +107,6 @@ const Order = () => {
               </View>
             </View> : null
         }
-      </View>
-      
-      
 
       <List 
         onScrollToLower={onScrollToLower} 

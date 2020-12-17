@@ -27,6 +27,8 @@ export const ListLayout = (props: I_List_Layout) => {
     </View>
   )
 }
+
+const bool = false
 const List = (props: I_Scroll) => {
   return  (
     <ScrollView
@@ -42,7 +44,7 @@ const List = (props: I_Scroll) => {
       onRefresherRefresh={props.onRefresherRefresh}
       refresherBackground='#F1F2F6'
       refresherDefaultStyle='none'
-      // refresherTriggered={refresherTriggered}
+      refresherTriggered={bool}
       // onDragEnd={() => {console.log('onDragEnd')}}
       // onTransitionEnd={() => {console.log('onTransitionEnd')}}
       // onDragStart={() => {console.log('onDragStart')}}

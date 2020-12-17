@@ -1,5 +1,5 @@
 export default {
-  // entryPagePath: 'pages/order/orderDetail/index',
+  entryPagePath: 'pages/bill/index',
   
   pages: [
     'pages/home/index',
@@ -12,6 +12,7 @@ export default {
     'pages/order/index',
     'pages/order/orderDetail/index',
     'pages/afterSale/index',
+    'pages/afterSale/afterSaleDetail/index',
     'pages/bill/index',
     'pages/records/index',
     'pages/withdraw/index'

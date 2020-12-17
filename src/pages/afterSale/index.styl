@@ -1,4 +1,29 @@
-.index {
-  flex-direction: column;
-  width: 100%;
-}
+.afterSalePage
+  // padding 0 20px
+  .at-search-bar__action
+    font-weight 400
+    font-size 35px
+    color #000
+    background-color #fff
+  .at-search-bar::after
+    border-bottom-width 0
+  .condition_box
+    width 100%
+    height 82px
+    background-color #FFFFFF
+    font-size 30px
+    .selection,.selection_open
+      width 50%
+      &:after
+        content ''
+        display inline-block
+        width 0
+        height 0
+        border 8px solid transparent 
+        border-top 10px solid rgba(0, 0, 0, 0.85)
+        margin-left 10px
+        transform rotate(0deg) translateY(2px)
+        transition 0.2s transform
+    .selection_open
+      &:after
+        transform rotate(-180deg) translateY(7px)
