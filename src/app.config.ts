@@ -1,6 +1,6 @@
 export default {
-  // entryPagePath: 'pages/task/index',
-  
+  // entryPagePath: 'pages/withdraw/index',
+
   pages: [
     'pages/home/index',
     'pages/mine/index',
@@ -18,8 +18,8 @@ export default {
     'pages/records/index',
     'pages/webView/index',
     'pages/forgetPwd/index',
-    'pages/resetPwd/index'
-    // 'pages/withdraw/index'
+    'pages/resetPwd/index',
+    'pages/withdraw/index'
     // 'pages/demos/index'
   ],
   appId: 'wx4a48efb72145fee2',
