@@ -1,10 +1,13 @@
-
 .withdraw_page_box
   width 100%
-  min-height 100%
-  background-color #F8F8F8
-  font-family PingFangSC-Regular, PingFang SC
+  height 100%
+  background-color #FFFFFF
+  padding-top 150px
+  box-sizing border-box
   .warn_text_box
+    position fixed
+    top 0
+    left 0
     width 100%
     height 70px
     line-height 70px
@@ -48,74 +51,53 @@
         left 24px
     .show_toolTip
       transform scale(1)
-.withdraw_page_container
-  padding 30px
-  width 100%
-  box-sizing border-box
-  .card_box
-    width 100%
-    height 435px
-    border-radius 12px
-    overflow hidden
-    background-color #FFFFFF
-  .card_head
-    width 100%
-    height 144px
-    background linear-gradient(135deg, #372AFE 0%, #4537FC 100%)
-    border-radius 12px 12px 0px 0px
-    box-sizing border-box
-    padding 31px 24px
-    color #FFFFFF
-    font-size 28px
-    display flex
-    .card_info
-      margin-left 89px
-      .card_num
-        font-family PingFangSC-Medium, PingFang SC
-        font-weight 500
-      .time
-        font-size 26px
-        margin-top 5px
 
-
-  .card-body
-    box-sizing border-box
-    padding 24px
-    .amount_label
-      font-size 28px
-      line-height 40px
-      margin-top 4px
-    .amount
-      font-size 48px
-      height 67px
-      margin 25px 0
-      padding 25px 0
-      border-bottom 1px solid #E8E8E8
-    .amountInput
-      font-size 48px
-      height 50px
-      line-height 50px
-      margin-left 12px
-    .amount_limit
-      font-size 22px
-      color rgba(0, 0, 0, 0.45)
-      line-height 30px
-  .withdraw_button
-    width 100%
-    margin 50px auto 25px auto
+  .withdraw_title
+    height 42px
+    font-size 30px
+    color rgba(0, 0, 0, 0.85)
+    line-height 42px
+  .withdraw_amount
+    height 117px
+    font-size 100px
+    font-family DINAlternate-Bold, DINAlternate
+    font-weight bold
+    color #474245
+    line-height 117px
+    margin 30px auto
+    .withdraw_unit
+      font-size 80px
+      margin-right 20px
+  .record_button
+    // height 50px
+    font-size 26px
+    color #4F5AF7
+    margin-bottom 200px
+    padding 20px
+    // line-height 50px
+    text-align center
+    &:after
+      content ''
+      display inline-block
+      width 10px
+      height 10px
+      border-top 1px solid #4F5AF7
+      border-right 1px solid #4F5AF7
+      transform rotate(45deg)
+      margin-left 4px
+  .withdraw_button, .repay_button
+    width 346px
     height 86px
     line-height 86px
-    background #FFFFFF
-    box-shadow 0px 2px 8px 0px #E5E5E5
-    border 0 none
-  .remind_box
-    width 100%
-    font-size 22px
-    color rgba(0, 0, 0, 0.45)
-    line-height 30px
-    .title
-      color rgba(208, 51, 51, 0.85)
-      margin-bottom 10px
+    border-radius 8px
+    border 1px solid #979797
+    font-size 30px
+    color #474245
+    margin-bottom 40px
+    text-align center
+  .repay_button
+    background #4F5AF7
+    color #ffffff
+    border 1px solid #4F5AF7
 
 
-  

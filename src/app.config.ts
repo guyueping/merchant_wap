@@ -1,12 +1,12 @@
 export default {
-  // entryPagePath: 'pages/order/index',
+  // entryPagePath: 'pages/repay/index',
   
   pages: [
+    'pages/index/index',
     'pages/home/index',
     'pages/mine/index',
     'pages/mine/accountDetail/index',
     'pages/login/index',
-    // 'pages/list/index',
     'pages/sale/index',
     'pages/account/index',
     'pages/task/index',
@@ -20,7 +20,9 @@ export default {
     'pages/webView/index',
     'pages/forgetPwd/index',
     'pages/resetPwd/index',
-    'pages/withdraw/index'
+    'pages/withdraw/index',
+    'pages/repay/index'
+    // 'pages/list/index',
     // 'pages/demos/index'
   ],
   appId: 'wx4a48efb72145fee2',
@@ -28,7 +30,7 @@ export default {
     list: [{
       'iconPath': 'assets/images/icon_home.png',
       'selectedIconPath': 'assets/images/icon_home_primary.png',
-      'pagePath': 'pages/home/index',
+      'pagePath': 'pages/index/index',
       'text': '首页'
     }, {
       'iconPath': 'assets/images/icon_my.png',
@@ -42,9 +44,9 @@ export default {
     'borderStyle': 'white'
   },
   window: {
-    backgroundColor: '#F1F2F6',
+    backgroundColor: '#F8F8F8',
     backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#4D66FF',
+    navigationBarBackgroundColor: '#4F5AF7',
     navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'white'
   }

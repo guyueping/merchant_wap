@@ -1,5 +1,5 @@
 export default {
-  navigationBarTitleText: '账户资金',
+  navigationBarTitleText: '垫付还款',
   navigationBarBackgroundColor: '#FFFFFF',
   navigationBarTextStyle: 'black'
   // enableShareAppMessage: true,
