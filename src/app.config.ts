@@ -1,5 +1,5 @@
 export default {
-  entryPagePath: 'pages/mine/index',
+  // entryPagePath: 'pages/mine/index',
   
   pages: [
     'pages/index/index',
