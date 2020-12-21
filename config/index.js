@@ -32,6 +32,8 @@ const config = {
     '@/store': resolvePath('src/store'),
     '@/utils': resolvePath('src/utils'),
     '@/images': resolvePath('src/assets/images'),
+    "@/api": resolvePath('src/api'),
+    "@/typings": resolvePath('src/typings')
     // '@typings': resolvePath('typings'),
     
   },

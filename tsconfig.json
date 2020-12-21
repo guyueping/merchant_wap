@@ -31,7 +31,9 @@
       "@/pages/*": ["./src/pages/*"],
       "@/store/*": ["./src/store/*"],
       "@/utils/*": ["./src/utils/*"],
-      "@/images/*": ["./src/assets/images/*"]
+      "@/images/*": ["./src/assets/images/*"],
+      "@/api/*": ["./src/api/*"],
+      "@/typings/*": ["./src/typings/*"]
     }
   },
   "exclude": [
