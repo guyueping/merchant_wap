@@ -24,8 +24,6 @@ const Withdraw = () => {
     availableAmount: 0.00 // 可用余额
   })
 
-  const [amount, setAmount] = useState(0)
-
 
   useEffect(() => {
     // queryData()
