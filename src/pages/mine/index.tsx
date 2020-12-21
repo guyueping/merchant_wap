@@ -50,7 +50,7 @@ const Mine = () => {
         />
       </AtList>
       <AtButton className='quit_button' onClick={handleQuit}>退出登录</AtButton>
-      <Modal show={showModal} content='确定要退出系统吗' onCancel={handleCancel} onConfirm={handleConfirm} />
+      <Modal show={showModal} content='您确定要退出系统吗' title='温馨提示' onCancel={handleCancel} onConfirm={handleConfirm} />
     </View>
   )
 }

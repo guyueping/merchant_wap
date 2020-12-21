@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { View, Input, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { AtButton } from 'taro-ui'
+import Modal from '@/components/modal'
 import './index.styl'
 
 const Withdraw = () => {
   const [showToolTip, setShowToolTip] = useState(false)
+  const [showModal ,setShowModal] = useState(true)
 
   const handleWranClick = (e) => {
     e.stopPropagation()
@@ -53,6 +55,14 @@ const Withdraw = () => {
           <View>3、提现成功后，48小时内如未到账，人工无法加急，请您耐心等待，到账后可联系银行客服，核实当天入账明细及余额变动情况。</View>
         </View>
       </View>
+      <Modal 
+        show={showModal} 
+        content={<View>当前平台垫付资金<Text className='red'>-¥100.00元</Text>请先处理欠款后可正常提现</View>} 
+        popWarning={true} 
+        onCancel={() => {setShowModal(false)}} 
+        confirmText='立即处理'
+        onConfirm={() => {setShowModal(false); Taro.navigateTo({url: '/pages/repay/index'}); }}
+      />
     </View>
   )
 }

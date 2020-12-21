@@ -10,11 +10,13 @@ import iconTask from '@/images/icon_task.png'
 import iconOrder from '@/images/icon_order.png'
 import iconTotal from '@/images/icon_total.png'
 import iconBill from '@/images/icon_bill.png'
+import Modal from '@/components/modal'
 
 const pageList = ['sale', 'account', 'task', 'afterSale', 'bill']
 
 const IndexPage = () => {
   const [showToolTip, setShowToolTip] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   const handleWranClick = (e) => {
     e.stopPropagation()
@@ -103,6 +105,7 @@ const IndexPage = () => {
           </View>
         </View>
       </View>
+      <Modal show={showModal} content='未登录或登录已过期，请登录' title='温馨提示' onClose={() => {setShowModal(false)}} />
     </View>
   )
 }
