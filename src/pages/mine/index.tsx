@@ -4,7 +4,10 @@ import Taro from '@tarojs/taro'
 import { AtButton, AtList, AtListItem } from 'taro-ui'
 import './index.styl'
 import iconHelp from '@/images/icon_help.png'
-import iconOpinion from '@/images/icon_opinion.png'
+import iconForgetPwd from '@/images/icon_forget_pwd.png'
+import iconPayPwd from '@/images/icon_pay_pwd.png'
+import iconRegisterPwd from '@/images/icon_register_pwd.png'
+
 import iconAvatar from '@/images/icon_avatar.png'
 import Modal from '@/components/modal'
 
@@ -42,11 +45,25 @@ const Mine = () => {
           title='帮助'
           arrow='right'
           thumb={iconHelp}
+          onClick={() => { Taro.navigateTo({url: `/pages/webView/index?url=${encodeURIComponent('xxxxxx')}`}) }}
         />
         <AtListItem
-          title='意见反馈'
+          title='修改登录密码'
           arrow='right'
-          thumb={iconOpinion}
+          thumb={iconForgetPwd}
+          onClick={() => { Taro.navigateTo({url: '/pages/resetPwd/index'}) }}
+        />
+        <AtListItem
+          title='修改支付密码'
+          arrow='right'
+          thumb={iconPayPwd}
+          onClick={() => { Taro.navigateTo({url: `/pages/webView/index?url=${encodeURIComponent('xxxxxx')}`}) }}
+        />
+        <AtListItem
+          title='忘记支付密码'
+          arrow='right'
+          thumb={iconRegisterPwd}
+          onClick={() => { Taro.navigateTo({url: `/pages/webView/index?url=${encodeURIComponent('xxxxxx')}`}) }}
         />
       </AtList>
       <AtButton className='quit_button' onClick={handleQuit}>退出登录</AtButton>
