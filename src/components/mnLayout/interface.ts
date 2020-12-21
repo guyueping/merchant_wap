@@ -5,7 +5,9 @@ export interface IPb {
   statusBarStyle?: object // 自定义StatusBar 的样式
   hideStatusBar?: boolean // 隐藏 顶部的StatusBar
   gotoType?: number // 跳转类型
-  hideArrow?: boolean //
+  hideArrow?: boolean
+  navStyle?: React.CSSProperties
+  arrowType?: number //
 }
 export interface IPt {
   dataList: object[]

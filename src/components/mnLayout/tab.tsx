@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { View, Text, Image } from '@tarojs/components'
-import { goTo } from '@utils/mnRoute'
-// import { getData, setData } from '@utils/ypStore'
+import { goTo } from '@/utils/mnRoute'
 import './tab.less'
 import { IPt } from './interface'
 
@@ -12,7 +11,7 @@ const MnLayout = (IProps: IPt) => {
         goTo(item.pathVal, 1)
     }
     return (
-        <View className='tab_mnlayout_box'>
+        <View className='tab_mnlayout_box' style={{ background: '#fff' }}>
             <View className='tab_mnlayout_boxwrap'>
                 {dataList.map((item: any) => {
                     return <View onClick={

@@ -1,6 +1,6 @@
 export default {
   // entryPagePath: 'pages/withdraw/index',
-  
+
   pages: [
     'pages/index/index',
     'pages/home/index',
@@ -21,33 +21,34 @@ export default {
     'pages/forgetPwd/index',
     'pages/resetPwd/index',
     'pages/withdraw/index',
-    'pages/repay/index'
+    'pages/repay/index',
     // 'pages/list/index',
     // 'pages/demos/index'
   ],
   appId: 'wx4a48efb72145fee2',
-  tabBar: {
-    list: [{
-      'iconPath': 'assets/images/icon_home.png',
-      'selectedIconPath': 'assets/images/icon_home_primary.png',
-      'pagePath': 'pages/index/index',
-      'text': '首页'
-    }, {
-      'iconPath': 'assets/images/icon_my.png',
-      'selectedIconPath': 'assets/images/icon_my_primary.png',
-      'pagePath': 'pages/mine/index',
-      'text': '我的'
-    }],
-    'color': '#969696',
-    'selectedColor': '#4F5AF7',
-    'backgroundColor': '#fff',
-    'borderStyle': 'white'
-  },
+  // tabBar: {
+  //   list: [{
+  //     'iconPath': 'assets/images/icon_home.png',
+  //     'selectedIconPath': 'assets/images/icon_home_primary.png',
+  //     'pagePath': 'pages/index/index',
+  //     'text': '首页'
+  //   }, {
+  //     'iconPath': 'assets/images/icon_my.png',
+  //     'selectedIconPath': 'assets/images/icon_my_primary.png',
+  //     'pagePath': 'pages/mine/index',
+  //     'text': '我的'
+  //   }],
+  //   'color': '#969696',
+  //   'selectedColor': '#4F5AF7',
+  //   'backgroundColor': '#fff',
+  //   'borderStyle': 'white'
+  // },
   window: {
     backgroundColor: '#F8F8F8',
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#4F5AF7',
     navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'white'
-  }
+    navigationBarTextStyle: 'white',
+    navigationStyle: 'custom',
+  },
 }

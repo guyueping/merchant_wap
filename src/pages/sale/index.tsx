@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { View, Text, Image } from '@tarojs/components'
 import List, { ListLayout } from '@/components/list'
 import styles from './index.module.styl'
+import MnLayout from '@/components/mnLayout'
+
 const SaleList = () => {
   const [showLoading, setShowLoading] = useState(false)
   const [goodList, setGoodList] = useState([1, 2, 3, 4, 5])
@@ -20,6 +22,7 @@ const SaleList = () => {
   }
   const listItem = (it) => {
     return (
+
       <View className={styles.list_item}>
         <Image className={styles.img}
           src='https://camo.githubusercontent.com/3e1b76e514b895760055987f164ce6c95935a3aa/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f6d74642f686f6d652f6c6f676f2d3278313531333833373932363730372e706e67'
@@ -32,31 +35,34 @@ const SaleList = () => {
           </View>
         </View>
       </View>
+
     )
   }
   return (
-    <ListLayout className={styles.content}>
-      <View className={styles.top}>
-        <Text className={styles.left}>今日数据</Text>
-        <View className={styles.right}>2020-12-01 16:09<View className={`at-icon at-icon-reload ${styles.icon_reload}`}></View></View>
-      </View>
-      <View className={styles.cardbox}>
-        <View className={styles.item}>
-          <Text className={styles.title}>今日营业额</Text>
-          <View className={styles.numbox}><Text className={styles.icon}>¥</Text><Text className={styles.num}>198.00</Text></View>
+    <MnLayout arrowType={2} title='实时销售' hideArrow={false} navStyle={{ backgroundColor: '#4F5AF7', color: '#ffffff' }} statusBarStyle={{ backgroundColor: '#4F5AF7' }}>
+      <ListLayout className={styles.content}>
+        <View className={styles.top}>
+          <Text className={styles.left}>今日数据</Text>
+          <View className={styles.right}>2020-12-01 16:09<View className={`at-icon at-icon-reload ${styles.icon_reload}`}></View></View>
         </View>
-        <View className={styles.item}>
-          <Text className={styles.title}>已售份数</Text>
-          <View className={styles.numbox}><Text className={styles.num}>198</Text></View>
+        <View className={styles.cardbox}>
+          <View className={styles.item}>
+            <Text className={styles.title}>今日营业额</Text>
+            <View className={styles.numbox}><Text className={styles.icon}>¥</Text><Text className={styles.num}>198.00</Text></View>
+          </View>
+          <View className={styles.item}>
+            <Text className={styles.title}>已售份数</Text>
+            <View className={styles.numbox}><Text className={styles.num}>198</Text></View>
+          </View>
         </View>
-      </View>
-      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
-        <View className={styles.list}>
-          {goodList.map(item => listItem(item))}
-        </View>
-      </List>
+        <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
+          <View className={styles.list}>
+            {goodList.map(item => listItem(item))}
+          </View>
+        </List>
 
-    </ListLayout>
+      </ListLayout>
+    </MnLayout>
   )
 }
 export default SaleList

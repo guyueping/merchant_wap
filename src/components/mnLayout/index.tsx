@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect, useCallback, memo } from 'react'
 import Taro from '@tarojs/taro'
-// import { getData, setData } from '@utils/ypStore'
-import { View, } from '@tarojs/components'
+import { View, Picker, ScrollView } from '@tarojs/components'
 import { IPs } from './interface'
 import MnNav from './nav'
 import Tab from './tab'
@@ -16,10 +15,14 @@ const dataList = [
     { title: '首页', pathVal: "/pages/index/index", icon: IconHome, iconAct: IconHomeAct },
     { title: '我的', pathVal: "/pages/mine/index", icon: IconMine, iconAct: IconMineAct }
 ]
+// const envList = ['prod', 'pre', 'sit', 'test', 'dev'];
 const MnLayout = (IProps: IPs) => {
-    const { hideArrow = true, tabPath = '', children, title, gotoType = 2, hideStatusBar = false, showNav = true, path, statusBarStyle, restStyle, backTitle, } = IProps
+    const { arrowType = 1, hideArrow = true, navStyle = {}, showTab = false, tabPath = '', children, title, gotoType = 2, hideStatusBar = false, showNav = true, path, statusBarStyle, restStyle, backTitle, } = IProps
     const [styleObj, setStyleObj] = useState({ width: '', height: '', })
     const [statusBarHeight, setStatusBarHeight] = useState(20)
+    const numberChange = () => {
+
+    }
     const _init = useCallback(() => {
         try {
             const res = Taro.getSystemInfoSync()
@@ -47,7 +50,7 @@ const MnLayout = (IProps: IPs) => {
     return (
         <View className='mnlayout_box' style={{ width: '100vw', height: '100vh', ...restStyle }}>
             {!hideStatusBar && styleObj.width ? <View className='statusBarHeight' style={styleObj}></View> : null}
-            { showNav ? <MnNav hideArrow={hideArrow} gotoType={gotoType} title={title} backTitle={backTitle} path={path} ></MnNav> : null
+            { showNav ? <MnNav arrowType={arrowType} navStyle={navStyle} hideArrow={hideArrow} gotoType={gotoType} title={title} backTitle={backTitle} path={path} ></MnNav> : null
             }
             <View className='childrenView'> {children}</View>
             {tabPath ? <Tab statusBarHeight={statusBarHeight} tabPath={tabPath} dataList={dataList}></Tab> : null}
