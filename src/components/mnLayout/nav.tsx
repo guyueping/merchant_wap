@@ -20,7 +20,7 @@ const MnNav = (IProps: IPb) => {
         }
     }
     return (
-        <View className='mnNav_box' style={{ ...IProps.navStyle }}>
+        <View className='mnNav_box' style={{ backgroundColor: '#fff', ...IProps.navStyle }}>
             {hideArrow && !path ? null : <View className='leftPart' onClick={jumpFunc}>
                 <Image className='routeImg' src={arrowType === 1 ? RouteImg : RouteImg2}></Image>
                 <Text className='backTitle fos'>{IProps.backTitle || ''}</Text>
