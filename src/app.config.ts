@@ -1,9 +1,8 @@
 export default {
-  // entryPagePath: 'pages/withdraw/index',
+  // entryPagePath: 'pages/account/index',
 
   pages: [
     'pages/index/index',
-    'pages/home/index',
     'pages/mine/index',
     'pages/mine/accountDetail/index',
     'pages/login/index',
@@ -22,8 +21,8 @@ export default {
     'pages/resetPwd/index',
     'pages/withdraw/index',
     'pages/repay/index',
-    // 'pages/list/index',
-    // 'pages/demos/index'
+    // 'pages/home/index',
+    // 'pages/list/index'
   ],
   appId: 'wx4a48efb72145fee2',
   // tabBar: {

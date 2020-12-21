@@ -61,7 +61,7 @@ const Account = () => {
 
   return (
     <MnLayout title='账户资金' hideArrow={false}>
-      <View className='withdraw_page_box flex_center_start_column' onClick={handlePageClick}>
+      <View className='withdraw_page_box' onClick={handlePageClick}>
         {data.settledAdvanceAmount > 0 && (
           <View className='warn_text_box flex_center_start_row' onClick={handleWranClick}>
             <View className='icon_box'>
@@ -72,19 +72,21 @@ const Account = () => {
             <Text>，请及时还款后可正常提现</Text>
           </View>
         )}
-        <View className='withdraw_title'>可提现金额</View>
-        <View className='withdraw_amount'><Text className='withdraw_unit'>¥</Text>{data.withdrawableAmount}</View>
-        <View className='record_button flex_center_center_row' onClick={() => { Taro.navigateTo({ url: '/pages/records/index' }) }}>查看资金记录</View>
-        <View className={data.settledAdvanceAmount > 0 ? 'withdraw_button' : 'repay_button'} onClick={handleWithdraw}>提现</View>
-        {data.settledAdvanceAmount > 0 && <View className='repay_button' onClick={() => { Taro.navigateTo({ url: '/pages/repay/index' }) }}>去还款</View>}
-        <Modal
-          show={showModal}
-          content={<View>当前平台垫付资金<Text className='red'>-¥{data.settledAdvanceAmount}元</Text>请先处理欠款后可正常提现</View>}
-          popWarning
-          onCancel={() => { setShowModal(false) }}
-          confirmText='立即处理'
-          onConfirm={() => { setShowModal(false); Taro.navigateTo({ url: '/pages/repay/index' }); }}
-        />
+        <View className='inner_box flex_center_start_column'>
+          <View className='withdraw_title'>可提现金额</View>
+          <View className='withdraw_amount'><Text className='withdraw_unit'>¥</Text>{data.withdrawableAmount}</View>
+          <View className='record_button flex_center_center_row' onClick={() => { Taro.navigateTo({ url: '/pages/records/index' }) }}>查看资金记录</View>
+          <View className={data.settledAdvanceAmount > 0 ? 'withdraw_button' : 'repay_button'} onClick={handleWithdraw}>提现</View>
+          {data.settledAdvanceAmount > 0 && <View className='repay_button' onClick={() => { Taro.navigateTo({ url: '/pages/repay/index' }) }}>去还款</View>}
+          <Modal
+            show={showModal}
+            content={<View>当前平台垫付资金<Text className='red'>-¥{data.settledAdvanceAmount}元</Text>请先处理欠款后可正常提现</View>}
+            popWarning
+            onCancel={() => { setShowModal(false) }}
+            confirmText='立即处理'
+            onConfirm={() => { setShowModal(false); Taro.navigateTo({ url: '/pages/repay/index' }); }}
+          />
+        </View>
       </View>
     </MnLayout>
   )

@@ -1,3 +1,6 @@
 export default {
-  navigationBarTitleText: '忘记密码'
+  navigationBarTitleText: '忘记密码',
+  navigationStyle: 'default',
+  navigationBarTextStyle: 'black',
+  navigationBarBackgroundColor: '#FFFFFF'
 }

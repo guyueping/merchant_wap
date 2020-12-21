@@ -102,7 +102,7 @@ const IndexPage = () => {
   // }
 
   return (
-    <MnLayout tabPath='/pages/index/index' title='谊品商家端' hideArrow navStyle={{ backgroundColor: '#4F5AF7', color: '#ffffff' }} statusBarStyle={{ backgroundColor: '#4F5AF7' }}>
+    <MnLayout tabPath='/pages/index/index' title='谊品生鲜供应商' hideArrow navStyle={{ backgroundColor: '#4F5AF7', color: '#ffffff' }} statusBarStyle={{ backgroundColor: '#4F5AF7' }}>
       <View className='indexPage_box' onClick={handlePageClick}>
         <View className='top_box'></View>
         <View className='amount_box'>
