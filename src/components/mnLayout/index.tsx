@@ -12,8 +12,8 @@ import IconMineAct from './mine2.png'
 import './mnLayout.less'
 
 const dataList = [
-    { title: '首页', pathVal: "/pages/index/index", icon: IconHome, iconAct: IconHomeAct },
-    { title: '我的', pathVal: "/pages/mine/index", icon: IconMine, iconAct: IconMineAct }
+    { title: '首页', pathVal: "/pages/index/index", icon: IconHome, iconAct: IconHomeAct, index: 0 },
+    { title: '我的', pathVal: "/pages/mine/index", icon: IconMine, iconAct: IconMineAct, index: 1 }
 ]
 // const envList = ['prod', 'pre', 'sit', 'test', 'dev'];
 const MnLayout = (IProps: IPs) => {

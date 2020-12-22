@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Button, ScrollView } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import Taro, { navigateTo } from '@tarojs/taro'
-import { AtGrid } from 'taro-ui'
-import './index.styl'
 // import { gridData } from './constants'
 import iconSale from '@/images/icon_sale.png'
 import iconAccount from '@/images/icon_account.png'
@@ -15,6 +13,8 @@ import MnLayout from '@/components/mnLayout'
 import req from '@/utils/mnRequest'
 import { queryAccountBalance } from '@/api/api'
 import { getData } from '@/utils/ypStore'
+import './index.styl'
+
 
 const pageList = ['sale', 'account', 'task', 'afterSale', 'bill']
 
@@ -108,18 +108,18 @@ const IndexPage = () => {
         <View className='amount_box'>
           <View className='withdraw_box'>
             <View className='flex_center_start_row'>
-              <View className='withdraw_amount'>{isLogin ? data.withdrawableAmount : '*****'}</View>
+              <View className='withdraw_amount'>{isLogin ? (data.withdrawableAmount * 1).toFixed(2) : '*****'}</View>
               <View className='withdraw_button flex_center_center_row' onClick={() => { handleGridEvent(1) }}>去提现</View>
             </View>
             <View className='widthdraw_text'>可提现金额(元)</View>
           </View>
           <View className='amount_container'>
             <View className='amount_wrap'>
-              <View className='amount'>{isLogin ? data.settledAdvanceAmount : '*****'}</View>
+              <View className='amount'>{isLogin ? (data.settledAdvanceAmount * 1).toFixed(2) : '*****'}</View>
               <View className='amount_name'>待结算金额(元)</View>
             </View>
             <View className='amount_wrap'>
-              <View className='amount'>{isLogin ? data.saleAmount : '*****'}</View>
+              <View className='amount'>{isLogin ? (data.saleAmount * 1).toFixed(2) : '*****'}</View>
               <View className='amount_name'>今日销售额(元)</View>
             </View>
           </View>
@@ -129,7 +129,7 @@ const IndexPage = () => {
                 <View className={`toolTip ${showToolTip ? ' show_toolTip' : ''}`}>当提现失败或中途中止时，提现金额将会被冻结，30分钟后自动解冻。</View>
               </View>
               <Text>当前有冻结资金</Text>
-              <Text className='red'>{data.frozedAmount}元</Text>
+              <Text className='red'>{(data.frozedAmount * 1).toFixed(2)}元</Text>
             </View>
           )}
         </View>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Taro, { useShareAppMessage, usePullDownRefresh, useReachBottom } from '@tarojs/taro'
 import { View, Text, Picker, ScrollView } from '@tarojs/components'
-import './index.styl'
-import ListItem from './listItem/index'
 import List, { ListLayout } from '@/components/list'
 import DatePicker from '@/components/datePicker'
 import PopSelect from '@/components/popSelect'
+import MnLayout from '@/components/mnLayout'
+import ListItem from './listItem/index'
+import './index.styl'
 // import styles from './index.modules.styl'
 const getDate = () => {
   const date = new Date()
@@ -88,23 +89,25 @@ const Records = () => {
 
 
   return  (
-    <ListLayout className='accountPage_box'>
-      <View className='condition_box flex_center_center_row'>
-        <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
-          <DatePicker onConfirm={onDateConfirm} onCancel={dateCancel}>
-            {selectedYear}年{selectedMonth}月
-          </DatePicker>
+    <MnLayout title='账户资金' hideArrow={false}>
+      <ListLayout className='accountPage_box'>
+        <View className='condition_box flex_center_center_row'>
+          <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
+            <DatePicker onConfirm={onDateConfirm} onCancel={dateCancel}>
+              {selectedYear}年{selectedMonth}月
+            </DatePicker>
+          </View>
+          <View className={`selection flex_center_center_row${typeSelectOpen ? ' selection_open' : ''}`} onClick={handleTypeClick}>
+            <PopSelect options={typeAry} onCancel={typeCancel} onSelect={onTypeSelect}>
+              {typeAry[selectedType]}
+            </PopSelect>
+          </View>
         </View>
-        <View className={`selection flex_center_center_row${typeSelectOpen ? ' selection_open' : ''}`} onClick={handleTypeClick}>
-          <PopSelect options={typeAry} onCancel={typeCancel} onSelect={onTypeSelect}>
-            {typeAry[selectedType]}
-          </PopSelect>
-        </View>
-      </View>
-      <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
-        {ary.map(() => <ListItemWrap month={currentMonth} />)}
-      </List>
-    </ListLayout>
+        <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
+          {ary.map(() => <ListItemWrap month={currentMonth} />)}
+        </List>
+      </ListLayout>
+    </MnLayout>
   )
 }
 export default Records

@@ -24,16 +24,16 @@
       "global.d.ts"
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/assets/*": ["./src/assets/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/constants/*": ["./src/constants/*"],
-      "@/pages/*": ["./src/pages/*"],
-      "@/store/*": ["./src/store/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/images/*": ["./src/assets/images/*"],
-      "@/api/*": ["./src/api/*"],
-      "@/typings/*": ["./src/typings/*"]
+      "@/*": ["src/*"],
+      "@/assets/*": ["src/assets/*"],
+      "@/components/*": ["src/components/*"],
+      "@/constants/*": ["src/constants/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/store/*": ["src/store/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/images/*": ["src/assets/images/*"],
+      "@/api/*": ["src/api/*"],
+      "@/typings/*": ["src/typings/*"]
     }
   },
   "exclude": [
@@ -41,7 +41,8 @@
     "dist"
   ],
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "./typings/images.d.ts"
   ],
   "compileOnSave": false
 }
