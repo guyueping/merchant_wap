@@ -14,6 +14,7 @@
     "buildSit:weapp": "cross-env taro build --type weapp --env sit",
     "buildPre:weapp": "cross-env taro build --type weapp --env pre",
     "build:weapp": "cross-env taro build --type weapp",
+    "start": "cross-env npm run buildDev:weapp -- --watch",
     "dev:weapp": "cross-env npm run buildDev:weapp -- --watch",
     "devTest:weapp": "cross-env npm run buildTest:weapp -- --watch",
     "devSit:weapp": "cross-env npm run buildSit:weapp -- --watch",

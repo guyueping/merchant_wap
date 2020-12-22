@@ -1,42 +1,40 @@
 import React from 'react'
-import { View } from '@tarojs/components'
+import { View, Button } from '@tarojs/components'
 import './index.styl'
-import { AtModal } from 'taro-ui'
+import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from 'taro-ui'
+import popWarning from '@/images/pop_warning.png'
 
 
 interface I_Modal{
   onCancel?: () => void;
   onConfirm?: () => void;
+  onClose?: () => void;
   show?: boolean;
-  content?: string;
+  content?: string | React.ReactNode;
+  title?: string | React.ReactNode;
+  confirmText?: string | React.ReactNode;
+  cancelText?: string | React.ReactNode;
+  closeText?: string | React.ReactNode;
+  popWarning?: boolean;
 }
 
 const Modal = (props: I_Modal) => {
-
-  const handleCancel = () => {
-    console.log('handleCancel')
-    props.onCancel && props.onCancel()
-  }
-
-  const handleConfirm = () => {
-    console.log('handleConfirm')
-    props.onConfirm && props.onConfirm()
-  }
   
   return (
     <View className='modal_component_box'>
-      <AtModal 
-        isOpened={props.show || false}
-        // title='标题'
-        cancelText='取消'
-        confirmText='确认'
-        // onClose={ this.handleClose }
-        onCancel={handleCancel}
-        onConfirm={handleConfirm}
-        content={props.content}
-      />
-    </View>
-    
+      <AtModal isOpened={props.show || false}>
+        {props.title && <AtModalHeader>{props.title}</AtModalHeader>}
+        {props.popWarning && <image className='warning_title' src={popWarning} />}
+        <AtModalContent>
+          {props.content}
+        </AtModalContent>
+        <AtModalAction> 
+          {props.onCancel && <Button onClick={props.onCancel}>{props.cancelText || '取消'}</Button>} 
+          {props.onConfirm && <Button onClick={props.onConfirm}>{props.confirmText || '确定'}</Button>}
+          {props.onClose && <Button onClick={props.onClose}>{props.closeText || '确定'}</Button>} 
+        </AtModalAction>
+      </AtModal>
+    </View>    
   )
 }
 

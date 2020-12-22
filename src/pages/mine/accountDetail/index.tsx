@@ -12,8 +12,6 @@ const AccountDetail = () => {
       <AtListItem title='销售商'  extraText='安徽省衍东贸易有限公司' />
       <AtListItem title='管理员' extraText='管理员名字' />
       <AtListItem title='手机号' extraText='18913243246' />
-      <AtListItem title='修改登录密码' arrow='right' onClick={() => { Taro.navigateTo({url: '/pages/resetPwd/index'}) }} />
-      <AtListItem title='修改支付密码' arrow='right' onClick={() => { Taro.navigateTo({url: `/pages/webView/index?url=${encodeURIComponent('xxxxxx')}`}) }} />
     </AtList>
   )
 }

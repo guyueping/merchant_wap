@@ -76,6 +76,8 @@ export default class MnRequest {
           url: getBaseUrl(apiName as string),
           header: {
             'Content-Type': 'application/json;charset=UTF-8',
+            'app-id': 'ypsj',
+            'app-platform': 'wap'
           },
           dataType: 'json',
           data: paramsObj,

@@ -1,7 +1,7 @@
 @import './assets/css/common.styl'
 
 page
-  background-color #F1F2F6
+  background-color #F8F8F8
   height 100%
   width 100%
   overflow hidden
@@ -13,16 +13,26 @@ page
 .flex_center_center_column
   flex(center, center, column)
 
+.flex_center_start_column
+  flex(center, flex-start, column)
+
+.flex_center_between__column
+  flex(left, space-between, column)
+
 .flex_center_center_row
   flex(center, center, row)
 
 .flex_center_between_row
   flex(center, space-between, row)
 
-.flex_center_between__column
-  flex(left, space-between, column)
+.flex_center_around_row
+  flex(center, space-around, row)
+
 .flex_center_start_row
   flex(center, flex-start, row)
+
+.red
+  color #FF4400
 
 .cardWrapper
   border-radius 12px
