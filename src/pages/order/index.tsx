@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { View } from '@tarojs/components'
-import List, { ListLayout } from '@/components/list'
+import CommonList, { ListLayout } from '@/components/CommonList'
 import DatePicker from '@/components/datePicker'
 import PopSelect from '@/components/popSelect'
 import SearchInput from '@/components/searchInput'
 import { OrderStatus as typeAry, orderData } from './constant'
 import ListItem from './components/listItem'
 import './index.styl'
-import { AtInput } from 'taro-ui'
 
 const getDate = () => {
   const date = new Date()
@@ -28,8 +27,14 @@ const Order = () => {
   const [selectedType, setSelectedType] = useState(0)
   const [showLoading, setShowLoading] = useState(false)
   const [searchStatus, setSearchStatus] = useState(true)
+
+  const listRef = useRef<any>()
  
-  
+  useEffect(() => {
+    if(listRef.current) {
+      listRef.current.reflashList()
+    }
+  })
 
   const onDateChange = (d) => {
     // setSelectedDate(e.detail.value)
@@ -92,6 +97,7 @@ const Order = () => {
           onChange={onChangeSearchValue}
           onConfirm={handleSearchValue}
           onActionClick={handleSearchValue}
+          // defaultValue='test'
         />
       </View>
         
@@ -111,13 +117,14 @@ const Order = () => {
             </View> : null
         }
 
-      <List 
+      <CommonList 
+        ref={listRef}
+        queryDataUrl="mock.url"
+        ListItem={ListItem}
         onScrollToLower={onScrollToLower} 
         onRefresherRefresh={onRefresherRefresh}
         showLoadMore={showLoading}>
-        {data.map((item: any) => <ListItem item={item} month={12} />)}
-      </List>
-
+      </CommonList>
     </ListLayout>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text } from '@tarojs/components'
 import { AtInput } from 'taro-ui'
 import './index.styl'
@@ -12,7 +12,8 @@ interface SearchInputProps{
 	onChange?: (arg: string) => void;
 	onActionClick?: (arg: string) => void;
 	onConfirm?: (arg: string) => void;
-	placeholder?: string
+	placeholder?: string;
+	placeholderStyle? : string;
 }
 
 const SearchInput = (props: SearchInputProps) => {
@@ -22,10 +23,11 @@ const SearchInput = (props: SearchInputProps) => {
 		type = 'text', 
 		placeholder = ''
 	} = props
-	console.log(type,'tttt')
 	const [inputValue, setInputValue] = useState(defaultValue)
+	const [showClearIcon, setShowClearIcon] = useState(false)
 
 	const handleChange = (v) => {
+		console.log(v,'changeeee')
 		setInputValue(v)
 		props.onChange && props.onChange(v)
 	}
@@ -37,6 +39,20 @@ const SearchInput = (props: SearchInputProps) => {
 	const onConfirm = () => {
 		inputValue && props.onConfirm && props.onConfirm(inputValue)
 	}
+
+	const clearInputValue = () => {
+		console.log('clickkk')
+		setInputValue('')
+	}
+
+	// useEffect(() => {
+	// 	if(inputValue) {
+	// 		setShowClearIcon(true)
+	// 	} else {
+	// 		setShowClearIcon(false)
+	// 	}
+		
+	// }, [inputValue])
 	
   return (
 		<View className='flex_center_between_row searchInputWrapper'>
@@ -44,13 +60,19 @@ const SearchInput = (props: SearchInputProps) => {
 				<View className='at-icon at-icon-search searchIconColor'></View>
 				<AtInput
 					name='value'
+					// clear
 					placeholder={placeholder}
 					type={type}
 					value={inputValue}
 					onChange={handleChange}
 					onConfirm={onConfirm}
 					border={false}
+					style={{width: '100%'}}
 				/>
+				{
+					showClearIcon ? 
+						<View onClick={clearInputValue}	className='at-icon at-icon-close-circle' style={{color: '#ccc'}}></View> : null		
+				}
 			</View>
 			{
 				showActionButton ? <Text className='searchButton' onClick={onActionClick}>搜索</Text> : null
