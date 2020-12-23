@@ -1,19 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { AtButton, AtList, AtListItem } from 'taro-ui'
-import './index.styl'
 import iconHelp from '@/images/icon_help.png'
 import iconForgetPwd from '@/images/icon_forget_pwd.png'
 import iconPayPwd from '@/images/icon_pay_pwd.png'
 import iconRegisterPwd from '@/images/icon_register_pwd.png'
-
 import iconAvatar from '@/images/icon_avatar.png'
 import Modal from '@/components/modal'
 import MnLayout from '@/components/mnLayout'
+import req from '@/utils/mnRequest'
+import './index.styl'
 
 const Mine = () => {
   const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    // queryData()
+  }, [])
+
+  const queryData = async () => {
+    // Taro.showModal()
+    Taro.showLoading({ title: '数据加载中...', mask: true })
+    try {
+      const res = await req.post({ apiUrl: queryAccountBalance })
+      console.log('res>>', res)
+      // setData()
+    } catch (err) {
+      console.log(err)
+    } finally {
+      Taro.hideLoading()
+    }
+  }
+
   const handleCancel = () => {
     console.log('handleCancel')
     setShowModal(false)
@@ -54,7 +73,7 @@ const Mine = () => {
             title='修改登录密码'
             arrow='right'
             thumb={iconForgetPwd}
-            onClick={() => { Taro.navigateTo({ url: '/pages/resetPwd/index' }) }}
+            onClick={() => { Taro.navigateTo({ url: '/pages/resetPwd/index?type=1&&account=18368108866' }) }}
           />
           <AtListItem
             title='修改支付密码'

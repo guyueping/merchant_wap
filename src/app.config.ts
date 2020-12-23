@@ -1,5 +1,5 @@
 export default {
-  // entryPagePath: 'pages/records/index',
+  // entryPagePath: 'pages/login/index',
 
   pages: [
     'pages/index/index',
@@ -21,6 +21,7 @@ export default {
     'pages/resetPwd/index',
     'pages/withdraw/index',
     'pages/repay/index',
+    'pages/settle/index',
     // 'pages/home/index',
     // 'pages/list/index'
   ],

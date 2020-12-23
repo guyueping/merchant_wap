@@ -42,7 +42,8 @@
   ],
   "include": [
     "src/**/*",
-    "./typings/images.d.ts"
+    "./typings/images.d.ts",
+    "./pages/images.d.ts"
   ],
   "compileOnSave": false
 }

@@ -4,7 +4,9 @@ import { View, Picker } from '@tarojs/components'
 import { getData, setData } from '@/utils/ypStore'
 
 interface IProps {
-    children: React.ReactNode
+    children: React.ReactNode,
+    className?: string | undefined;
+    style?: string | React.CSSProperties | undefined;
 }
 const envList = ['prod', 'pre', 'sit', 'test', 'dev'];
 const ChangeEnv = (IProps: IProps) => {
@@ -25,12 +27,16 @@ const ChangeEnv = (IProps: IProps) => {
     const numberChange = () => {
         number++;
         setNumber(number)
-        if (number > 2) {
+        if (number === 5) {
             setDisabled(false)
+        }
+        if(number > 5) {
+            setNumber(1)
+            setDisabled(true)
         }
     }
     return (
-        <View className='changeEnv_box' onClick={numberChange}>
+        <View className={`changeEnv_box ${IProps.className}`} onClick={numberChange} style={IProps.style}>
             <Picker disabled={disabled} value={value} mode='selector' range={envList} onChange={onChange}>
                 {IProps.children}
             </Picker>
