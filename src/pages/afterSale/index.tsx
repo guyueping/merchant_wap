@@ -83,7 +83,7 @@ const AfterSale = () => {
   }
 
   return  (
-    // <MnLayout title='售后统计' hideArrow={false}>
+    <MnLayout title='售后统计' hideArrow={false}>
       <ListLayout className='afterSalePage'>
         <View style={{backgroundColor: '#fff',}}>
           <SearchInput
@@ -118,7 +118,7 @@ const AfterSale = () => {
           {data.map((item: any) => <ListItem item={item} month={12} />)}
         </List>
       </ListLayout>
-    // </MnLayout>
+    </MnLayout>
   )
 }
 export default AfterSale

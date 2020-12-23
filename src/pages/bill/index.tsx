@@ -7,6 +7,7 @@ import PopSelect from '@/components/popSelect'
 import Tag from '@/components/tag'
 import { OrderStatus as typeAry, orderData, billStatusOptions } from './constant' 
 import ListItem from './components/listItem'
+import MnLayout from '@/components/mnLayout'
 import './index.styl'
 
 const getDate = () => {
@@ -75,6 +76,7 @@ const Bill = () => {
   }
 
   return (
+    <MnLayout title='结账单' hideArrow={false}>
     <ListLayout className='bill'>
       <View className='condition_box flex_center_center_row'>
         <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
@@ -94,15 +96,6 @@ const Bill = () => {
           onChange={onBillStatusChange}
           options={billStatusOptions}
         />
-        {/* <AtTag 
-          name='tag-1' 
-          type='primary' 
-          circle 
-          active={true}
-          onClick={(name,active) => console.log(name, active, 23333)}
-        >
-          tag-1
-        </AtTag> */}
       </View>
 
       <List 
@@ -113,6 +106,7 @@ const Bill = () => {
       </List>
 
     </ListLayout>
+    </MnLayout>
   )
 }
 export default Bill

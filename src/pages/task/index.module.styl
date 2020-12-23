@@ -2,6 +2,7 @@
   width 100%
   height 100%
   box-sizing border-box
+  background: #fbfbfb
   .mes
     background: #FFF9E7
     padding: 12px 0
@@ -17,6 +18,23 @@
       font-size: 34px
       margin-right: 5px
   
+  .fenge
+    color:rgba(0, 0, 0, 0.25);
+    font-size: 22px
+    text-align: center
+    position: relative
+    &:before, &:after
+      position: absolute
+      content: ''
+      width: 320px
+      height 1px
+      background: rgba(0, 0, 0, 0.25)
+      transform: scale(0.5)
+      top: 50%
+    &:before
+      left: calc(100% - 720px)
+    &:after
+      right :calc(100% - 720px)
   .item
     // margin-top: 20px
     padding: 20px 20px 0 20px

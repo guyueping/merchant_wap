@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { View, Text } from '@tarojs/components'
 import Taro, { navigateTo } from '@tarojs/taro'
 import List, { ListLayout } from '@/components/list'
+import MnLayout from '@/components/mnLayout'
 import styles from './index.module.styl'
 
 const Task = () => {
@@ -110,32 +111,34 @@ const Task = () => {
     navigateTo({ url: '/pages/task/taskDetail/index' })
   }
   return (
-    <ListLayout className={styles.content}>
-      <View className={styles.mes}>
-        <View className={`at-icon at-icon-volume-minus ${styles.vol}`}></View>
-        <Text>每日晚22:00更新截单</Text>
-      </View>
-      <List onScrollToLower={onScrollToLower} showLoadMore={loading}>
-        {
-          goodlist.map((item: goodInner) =>
-            <View className={styles.item}>
-              <View className={styles.head}>{item.date}</View>
-              {item.list.map((it: inner) =>
-                <View className={styles.info} onClick={goDtail}>
-                  <Text className={styles.left}>{it.time}</Text>
-                  <View className={styles.right}>
-                    <Text>已售份数</Text>
-                    <Text className={styles.num}>{it.num}</Text>
-                    <View className={`at-icon at-icon-chevron-right ${styles.icon}`}></View>
+    <MnLayout title='交付任务' hideArrow={false}>
+      <ListLayout className={styles.content}>
+        <View className={styles.mes}>
+          <View className={`at-icon at-icon-volume-minus ${styles.vol}`}></View>
+          <Text>每日晚22:00更新截单</Text>
+        </View>
+        <List onScrollToLower={onScrollToLower} showLoadMore={loading}>
+          <View className={styles.fenge}>以下为历史数据</View>
+          {
+            goodlist.map((item: goodInner) =>
+              <View className={styles.item}>
+                <View className={styles.head}>{item.date}</View>
+                {item.list.map((it: inner) =>
+                  <View className={styles.info} onClick={goDtail}>
+                    <Text className={styles.left}>{it.time}</Text>
+                    <View className={styles.right}>
+                      <Text>已售份数</Text>
+                      <Text className={styles.num}>{it.num}</Text>
+                      <View className={`at-icon at-icon-chevron-right ${styles.icon}`}></View>
+                    </View>
                   </View>
-                </View>
-              )}
-            </View>
-          )
-        }
-      </List>
+                )}
+              </View>
+            )
+          }
+        </List>
 
-      {/* <Picker
+        {/* <Picker
           mode='date'
           fields='month'
           onChange={onDateChange}>
@@ -143,7 +146,8 @@ const Task = () => {
             <AtListItem title='请选择日期' />
           </AtList>
         </Picker> */}
-    </ListLayout>
+      </ListLayout>
+    </MnLayout>
   )
 }
 export default Task

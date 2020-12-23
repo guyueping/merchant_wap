@@ -74,6 +74,12 @@
         {
           "name": "pages/taskDetail/index",
           "pathName": "pages/taskDetail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/task/taskDetail/index",
+          "pathName": "pages/task/taskDetail/index",
           "scene": null
         }
       ]
