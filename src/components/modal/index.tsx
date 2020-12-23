@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Button, Image } from '@tarojs/components'
-import './index.styl'
 import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from 'taro-ui'
 import popWarning from '@/images/pop_warning.png'
+import './index.styl'
 
 
 interface I_Modal{

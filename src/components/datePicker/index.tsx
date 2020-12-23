@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, PickerView,  PickerViewColumn} from '@tarojs/components'
-import styles from './index.module.styl'
 import PopBottom from '@/components/popBottom'
+import styles from './index.module.styl'
 
 const getDate = () => {
   const date = new Date()

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
-import { View, Text, Picker, ScrollView } from '@tarojs/components'
+import { View, ScrollView } from '@tarojs/components'
 import BirdLoading from '@/components/birdLoading'
 import LoadMore from '@/components/loadMore'
 import styles from './index.module.styl'

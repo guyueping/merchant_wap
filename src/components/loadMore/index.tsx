@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text } from '@tarojs/components'
-import './index.styl'
 import { AtActivityIndicator } from 'taro-ui'
+import './index.styl'
 
 interface I_LoadMore{
   showLoading?: boolean;

@@ -1,10 +1,10 @@
 import React from 'react'
 import { View } from '@tarojs/components'
-import styles from './index.module.styl'
 import emptyImg from '@/images/status_empty.png'
 import searchImg from '@/images/status_search.png'
 import waitImg from '@/images/status_wait.png'
 import warnImg from '@/images/status_warn.png'
+import styles from './index.module.styl'
 
 interface I_Status{
   imgUrl?: string;
