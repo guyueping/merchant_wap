@@ -1,5 +1,5 @@
 export default {
-  navigationBarTitleText: '账户资金',
+  navigationBarTitleText: '资金记录',
   // enableShareAppMessage: true,
   // navigationStyle: 'default',
   // navigationBarTextStyle: 'black',

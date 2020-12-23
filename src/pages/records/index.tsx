@@ -89,7 +89,7 @@ const Records = () => {
 
 
   return  (
-    <MnLayout title='账户资金' hideArrow={false}>
+    <MnLayout title='资金记录' hideArrow={false}>
       <ListLayout className='accountPage_box'>
         <View className='condition_box flex_center_center_row'>
           <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
