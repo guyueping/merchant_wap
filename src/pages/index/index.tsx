@@ -16,7 +16,7 @@ import { getData } from '@/utils/ypStore'
 import './index.styl'
 
 
-const pageList = ['sale', 'account', 'task', 'afterSale', 'bill']
+const pageList = ['sale', 'account', 'task', 'afterSale', 'bill', 'order']
 
 const IndexPage = () => {
   const [showToolTip, setShowToolTip] = useState(false)

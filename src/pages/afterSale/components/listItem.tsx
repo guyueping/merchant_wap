@@ -20,8 +20,8 @@ const ListItem = (props) => {
 				<View className={styles.itemUpLeft}>{`退款编号：${item1.orderId}`}</View>
 				<View className={styles.itemUpRight}>{item1.statusText}</View>
 			</View>
-			<View className={`flex_center_between_row ${styles.itemMiddle}`}>
-				<View style={{width: 70, height: 70}}><ImgCmp width={70} height={70}/></View>
+			<View className={styles.itemMiddle}>
+				{/* <View style={{width: 70, height: 70}}><ImgCmp width={70} height={70}/></View> */}
 				<View className={styles.itemMiddleDes}>
 					<View >{item1.name}</View>
 					<View className='flex_center_between_row'>

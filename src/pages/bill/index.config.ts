@@ -1,3 +1,4 @@
 export default {
-  navigationBarTitleText: '结账单'
+  enableShareAppMessage: true,
+  navigationBarTextStyle: 'black',
 }

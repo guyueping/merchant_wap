@@ -5,7 +5,7 @@ import './index.styl'
 
 const OrderDetail = (props) => {
 	const router = useRouter() //{ path: '', params: { ... } }
-	console.log(router, 'routterr')
+	// console.log(router, 'routterr')
 
 	return (
 		<View className='orderDetailPage'>

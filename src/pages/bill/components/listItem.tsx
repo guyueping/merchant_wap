@@ -17,14 +17,14 @@ const ListItem = (props) => {
 				<View className={styles.itemUpLeft}>{`${item1.statusText}`}</View>
 				<View className={styles.itemUpRight}>{`￥${item1.price}`}</View>
 			</View>
-			<View className={`flex_center_between_row ${styles.itemMiddle}`}>
-				<View style={{width: 70, height: 70}}><ImgCmp width={70} height={70}/></View>
+			<View className={styles.itemMiddle}>
+				{/* <View style={{width: 70, height: 70}}><ImgCmp width={70} height={70}/></View> */}
 				<View className={styles.itemMiddleDes}>
 					<View >{item1.name}</View>
 					<View className='flex_center_between_row'>
-						<Text>核销数量:<Text style={{color: '#333'}}>{item1.amount}</Text></Text>
-						<Text>扣点:<Text style={{color: '#333'}}>10%</Text></Text>
 						<Text >实付金额:<Text style={{color: '#333'}}>{`￥${item1.price}`}</Text></Text>
+						<Text>扣点:<Text style={{color: '#333'}}>10%</Text></Text>
+						<Text>核销数量:<Text style={{color: '#333'}}>{item1.amount}</Text></Text>
 					</View>
 				</View>
 			</View>

@@ -40,7 +40,8 @@ const CommonList = (props: I_Scroll, ref: any) => {
 	const { ListItem, queryDataUrl, formatResult, } = props
 	const [refresherTriggered, setRefresherTriggered] = useState(false)
 	const [data, setData] = useState(orderData) //列表数据 orderData
-	const [showLoadMore, setShowLoadMore] = useState(false)
+  const [showLoadMore, setShowLoadMore] = useState(false) //底部loading
+  const [showNoData, setShowNoData] = useState(false) //没有更多数据
 	const [listParams, setListParams] = useState({
 		size: 30,
 		page: 1,
@@ -152,7 +153,7 @@ const CommonList = (props: I_Scroll, ref: any) => {
 					data.map((item: any) => <ListItem item={item}/>) :
 					<StatusSearch moreInfo='抱歉，未找到与搜索相匹配内容' style={{ mrginBottom: 20, backgroundColor: '#FBFBFB', height: '100%' }} />
 			}
-      <LoadMore showLoading={showLoadMore} />
+      <LoadMore showLoading={showLoadMore} showNoData={showNoData}/>
     </ScrollView>
   )
 }
