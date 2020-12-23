@@ -72,7 +72,7 @@ const Login = () => {
         )}
         <AtButton className='login_button' disabled={btnDisabled} onClick={handleLogin}>登录</AtButton>
         <View className='link_button_box flex_center_center_row'>
-          <View className='link_button' onClick={() => { Taro.navigateTo({url: `/pages/webView/index?url=${encodeURIComponent('https://taro-docs.jd.com/taro/docs/components/open/web-view')}`})}}>申请入驻</View>
+          <View className='link_button' onClick={() => { Taro.navigateTo({url: `/pages/webView/index?url=${encodeURIComponent('https://miniwap.ypsx-internal.com/settleIn/index.html')}`})}}>申请入驻</View>
           <View className='divide'></View>
           <View className='link_button' onClick={() => { Taro.navigateTo({ url: '/pages/resetPwd/index?type=2' })}}>忘记密码</View>
         </View>
