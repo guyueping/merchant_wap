@@ -14,6 +14,8 @@ interface TagProps{
 	circle?: boolean;
 	defaultValue?: string | number;
 	onChange: (arg0: string | number) => void;
+	className?: string | undefined;
+  style?: any;
 }
 
 const Tag = (props: TagProps) => {
@@ -28,20 +30,12 @@ const Tag = (props: TagProps) => {
 	}
 	
   return (
-    <View className='tags'>
-				{
-					options?.map((option: any) => (
-						<AtTag
-							name={option.value}
-							type={props.type ?? 'primary'}
-							circle={props.circle ?? true}
-							active={selected === option.value}
-							onClick={handleSelect}
-						>
-							{option.label}
-						</AtTag>
-					))
-				}
+    <View className={`component_tags ${props.className}`} style={props.style} >
+			{options?.map((option: any, index: number) => (
+				<AtTag key={index} name={option.value} type={props.type ?? 'primary'} circle={props.circle ?? true} active={selected === option.value} onClick={handleSelect}>
+					{option.label}
+				</AtTag>
+			))}
     </View>
   )
 }

@@ -55,7 +55,7 @@ const List = (props: I_Scroll) => {
       onScrollToLower={props.onScrollToLower}
       onScroll={props.onScroll}
       refresherEnabled
-      refresherBackground='#F1F2F6'
+      refresherBackground='#F8F8F8'
       refresherDefaultStyle='none'
       refresherEnabled={true}
       refresherTriggered={refresherTriggered}

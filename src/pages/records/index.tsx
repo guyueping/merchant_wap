@@ -5,6 +5,7 @@ import List, { ListLayout } from '@/components/list'
 import DatePicker from '@/components/datePicker'
 import PopSelect from '@/components/popSelect'
 import MnLayout from '@/components/mnLayout'
+import Tags from '@/components/tag'
 import ListItem from './listItem/index'
 import './index.styl'
 // import styles from './index.modules.styl'
@@ -16,6 +17,7 @@ const getDate = () => {
 }
 const typeAry = ['全部', '提现', '垫付还款']
 const ary = [12]
+const status = [{label: '全部', value: 0}, {label: '处理中', value: 1}, {label: '交易成功', value: 2}, {label: '交易失败', value: 3}]
 const Records = () => {
   const {year, month} = getDate()
 
@@ -87,6 +89,10 @@ const Records = () => {
     }
   }
 
+  const onStatusChange = (value) => {
+    console.log('value:', value)
+  }
+
 
   return  (
     <MnLayout title='资金记录' hideArrow={false}>
@@ -103,6 +109,11 @@ const Records = () => {
             </PopSelect>
           </View>
         </View>
+        <Tags 
+          className='tag_box'
+          onChange={onStatusChange}
+          options={status}
+        />
         <List onScrollToLower={onScrollToLower} showLoadMore={showLoading}>
           {ary.map(() => <ListItemWrap month={currentMonth} />)}
         </List>
