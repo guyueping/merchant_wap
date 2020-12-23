@@ -16,7 +16,7 @@ import req from '@/utils/mnRequest'
 import { queryAccountBalance } from '@/api/api'
 import { getData } from '@/utils/ypStore'
 
-const pageList = ['sale', 'account', 'task', 'afterSale', 'bill']
+const pageList = ['sale', 'account', 'task', 'afterSale', 'bill', 'order']
 
 const IndexPage = () => {
   const [showToolTip, setShowToolTip] = useState(false)

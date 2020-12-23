@@ -11,7 +11,7 @@ import { recharge } from '@/api/api'
 // import Modal from '@/components/modal'
 
 const Repay = () => {
-  const inputRef = useRef()
+  const inputRef = useRef<any>()
   const prevInput = useRef('')
   const [data, setData] = useState({
     waitSettledAmount: 0.00, // 待结算金额

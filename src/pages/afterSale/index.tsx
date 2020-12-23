@@ -6,6 +6,7 @@ import PopSelect from '@/components/popSelect'
 import SearchInput from '@/components/searchInput'
 import { AtSearchBar } from "taro-ui"
 import ListItem from './components/listItem'
+import MnLayout from '@/components/mnLayout'
 import { OrderStatus as typeAry, orderData } from './constant' 
 import './index.styl'
 
@@ -82,40 +83,42 @@ const AfterSale = () => {
   }
 
   return  (
-    <ListLayout className='afterSalePage'>
-      <View style={{backgroundColor: '#fff',}}>
-        <SearchInput
-          placeholder='请输入订单号/商品名称'
-          placeholderStyle='color:#ccc;font-size:13px'
-          onChange={onChangeSearchValue}
-          onConfirm={handleSearchValue}
-          onActionClick={handleSearchValue}
-        />
-      </View>
+    // <MnLayout title='售后统计' hideArrow={false}>
+      <ListLayout className='afterSalePage'>
+        <View style={{backgroundColor: '#fff',}}>
+          <SearchInput
+            placeholder='请输入订单号/商品名称'
+            placeholderStyle='color:#ccc;font-size:13px'
+            onChange={onChangeSearchValue}
+            onConfirm={handleSearchValue}
+            onActionClick={handleSearchValue}
+          />
+        </View>
 
-      {
-        searchStatus ? 
-          <View className='condition_box flex_center_center_row'>
-            <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
-              <DatePicker mode='date' onConfirm={onDateChange} onCancel={dateCancel}>
-                {selectedYear}年{selectedMonth}月
-              </DatePicker> 
-            </View>
-            <View className={`selection flex_center_center_row${typeSelectOpen ? ' selection_open' : ''}`} onClick={handleTypeClick}>
-              <PopSelect options={typeAry} onSelect={onTypeChange} onCancel={typeCancel}>
-                {typeAry[selectedType]}
-              </PopSelect> 
-            </View>
-          </View> : null
-      }
+        {
+          searchStatus ? 
+            <View className='condition_box flex_center_center_row'>
+              <View className={`selection flex_center_center_row${dateSelectOpen ? ' selection_open' : ''}`} onClick={handleDateClick}>
+                <DatePicker mode='date' onConfirm={onDateChange} onCancel={dateCancel}>
+                  {selectedYear}年{selectedMonth}月
+                </DatePicker> 
+              </View>
+              <View className={`selection flex_center_center_row${typeSelectOpen ? ' selection_open' : ''}`} onClick={handleTypeClick}>
+                <PopSelect options={typeAry} onSelect={onTypeChange} onCancel={typeCancel}>
+                  {typeAry[selectedType]}
+                </PopSelect> 
+              </View>
+            </View> : null
+        }
 
-      <List 
-        onScrollToLower={onScrollToLower} 
-        onRefresherRefresh={onRefresherRefresh}
-        showLoadMore={showLoading}>
-        {data.map((item: any) => <ListItem item={item} month={12} />)}
-      </List>
-    </ListLayout>
+        <List 
+          onScrollToLower={onScrollToLower} 
+          onRefresherRefresh={onRefresherRefresh}
+          showLoadMore={showLoading}>
+          {data.map((item: any) => <ListItem item={item} month={12} />)}
+        </List>
+      </ListLayout>
+    // </MnLayout>
   )
 }
 export default AfterSale

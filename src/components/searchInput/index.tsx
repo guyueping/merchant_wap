@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text } from '@tarojs/components'
-import { AtInput } from 'taro-ui'
+import React, { useEffect, useState, useRef } from 'react'
+import { View, Text, Input } from '@tarojs/components'
 import './index.styl'
 
-type SearchType = 'text' | 'number' | 'password' | 'phone' | 'idcard' | 'digit'
+type SearchType = 'number' | 'text' | 'idcard' | 'digit'
 interface SearchInputProps{
   children?: React.ReactNode;
-  showActionButton?: boolean
 	type?: SearchType;
 	defaultValue?: string;
 	onChange?: (arg: string) => void;
@@ -19,17 +17,18 @@ interface SearchInputProps{
 const SearchInput = (props: SearchInputProps) => {
 	const { 
 		defaultValue, 
-		showActionButton = true, 
 		type = 'text', 
-		placeholder = ''
+		placeholder = '',
+		placeholderStyle = 'color:#ccc;font-size:13px'
 	} = props
 	const [inputValue, setInputValue] = useState(defaultValue)
 	const [showClearIcon, setShowClearIcon] = useState(false)
+	const inputRef = useRef<any>()
 
-	const handleChange = (v) => {
-		console.log(v,'changeeee')
-		setInputValue(v)
-		props.onChange && props.onChange(v)
+	const handleChange = (e) => {
+		setInputValue(e.detail.value)
+		props.onChange && props.onChange(e.detail.value)
+		return e.detail.value
 	}
 
 	const onActionClick = () => {
@@ -42,40 +41,45 @@ const SearchInput = (props: SearchInputProps) => {
 
 	const clearInputValue = () => {
 		console.log('clickkk')
-		setInputValue('')
+		// inputRef.current && inputRef.current.value = ''
+		if(inputRef.current) {
+			inputRef.current.value = ''
+			setInputValue('')
+		}
 	}
 
-	// useEffect(() => {
-	// 	if(inputValue) {
-	// 		setShowClearIcon(true)
-	// 	} else {
-	// 		setShowClearIcon(false)
-	// 	}
-		
-	// }, [inputValue])
+	useEffect(() => {
+		if(inputValue) {
+			!showClearIcon &&	setShowClearIcon(true)
+		} else {
+			showClearIcon && setShowClearIcon(false)
+		}	
+	}, [inputValue])
 	
   return (
 		<View className='flex_center_between_row searchInputWrapper'>
-			<View className='searchInput'>
+			<View className={`searchInput flex_center_start_row ${showClearIcon && 'borderColor'}`}>
 				<View className='at-icon at-icon-search searchIconColor'></View>
-				<AtInput
+				<Input
 					name='value'
 					// clear
+					ref={inputRef}
 					placeholder={placeholder}
 					type={type}
-					value={inputValue}
-					onChange={handleChange}
+					onInput	={handleChange}
 					onConfirm={onConfirm}
-					border={false}
-					style={{width: '100%'}}
+					placeholderStyle={placeholderStyle}
+					style={{width: '80%'}}
 				/>
 				{
 					showClearIcon ? 
-						<View onClick={clearInputValue}	className='at-icon at-icon-close-circle' style={{color: '#ccc'}}></View> : null		
+						<View onClick={clearInputValue}	className='at-icon at-icon-close-circle clearButton' style={{color: '#ccc'}}></View> : null		
 				}
 			</View>
 			{
-				showActionButton ? <Text className='searchButton' onClick={onActionClick}>搜索</Text> : null
+				showClearIcon ? 
+					<Text className='searchButton' onClick={clearInputValue} style={{color: '#4f5af7'}}>取消</Text> : 
+					<Text className='searchButton' onClick={onActionClick}>搜索</Text> 
 			}
 			
 		</View>

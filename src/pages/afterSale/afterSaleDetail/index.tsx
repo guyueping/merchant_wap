@@ -1,28 +1,40 @@
 import React, { useState } from 'react'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Input } from '@tarojs/components'
 import Taro, { useRouter } from '@tarojs/taro'
 import ImgCmp from '@/components/ypImg'
 import './index.styl'
 
 const AfterSaleDetail = (props) => {
 	const router = useRouter() //{ path: '', params: { ... } }
-	console.log(router, 'routterr')
+	// console.log(router, 'routterr')
+	const copyText = () => {
+		Taro.setClipboardData({
+			data: '23456666665',
+			success: function (res) {
+				console.log('复制成功')
+			}
+		})
+	}
 
 	return (
 		<View className='afterSaleDetail'>
 			<View className='flex_center_between_row orderInfo bgcStyle'>
-				<Text className='orderInfoId'>{`订单号：23456666665`}</Text>
+				<Text className='orderInfoId' onClick={copyText}>
+					{`订单号：23456666665`}
+					<Text onClick={copyText} className='copyStyle'>复制</Text>
+					<Input id='input'/>
+				</Text>
 				<Text className='orderInfoStatus'>审核中</Text>
 			</View>
 
 			<View className='bgcStyle'>
 				<View className='title'>商品信息</View>
-				<View className={`flex_center_between_row goodInfo`}>
+				<View className='flex_center_between_row'>
 					<View style={{width: 60, height: 60}}><ImgCmp width={60} height={60}/></View>
 					<View className='goodInfoDes flex_center_between__column'>
-						<View >商品名称商品名称商品名称商品名称商</View>
+						<View className='goodName'>商品名称商品名称商品名称商品名称商</View>
 						<View className='flex_center_between_row'>
-							<Text className='oval'>{`规格500g  |  数量 `}<Text style={{color: '#ff4400'}}>x23</Text></Text>
+							<Text className='oval'>退款数量 <Text style={{color: '#ff4400'}}>x23</Text></Text>
 							<Text >退款金额：<Text style={{color: '#ff4400', fontWeight: 400}}>￥7653</Text></Text>
 						</View>
 					</View>
