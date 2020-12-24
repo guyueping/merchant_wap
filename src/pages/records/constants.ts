@@ -24,8 +24,8 @@ export interface I_TradeRecords{
   tradeStatus: number;
   amount: number;
   tradeTime: string;
-  bank?: string; // bank.substr(-4)
-  cardId?: string;
+  bank?: string;
+  cardId?: string;  // cardId.substr(-4)
 }
 
 export interface I_ReqData{
