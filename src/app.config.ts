@@ -1,5 +1,5 @@
 export default {
-  // entryPagePath: 'pages/records/index',
+  // entryPagePath: 'pages/login/index',
 
   pages: [
     'pages/index/index',
@@ -25,7 +25,13 @@ export default {
     // 'pages/home/index',
     // 'pages/list/index'
   ],
-  appId: 'wx4a48efb72145fee2',
+  plugins:{
+    myPlugin: {
+      version: '1.3.0',
+      provider: 'wxefa63d84fe9f64a2'
+    }
+  },
+  // appId: 'wx4a48efb72145fee2',
   // tabBar: {
   //   list: [{
   //     'iconPath': 'assets/images/icon_home.png',

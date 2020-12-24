@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Image } from '@tarojs/components'
 import { goTo } from '@/utils/mnRoute'
-import './tab.less'
 import { IPt } from './interface'
+import './tab.less'
 
 const MnLayout = (IProps: IPt) => {
     const { dataList, tabPath, statusBarHeight } = IProps

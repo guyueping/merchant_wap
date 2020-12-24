@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, Image } from '@tarojs/components'
 import { goTo, backTo } from '@/utils/mnRoute'
 import { IPb } from './interface'
-import './nav.less'
 import RouteImg from './route1.png'
 import RouteImg2 from './route2.png'
+import './nav.less'
 
 const MnNav = (IProps: IPb) => {
     const { hideArrow, path, arrowType } = IProps

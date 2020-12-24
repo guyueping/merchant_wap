@@ -29,7 +29,7 @@ const IndexPage = () => {
     saleAmount: 0.00 // 今日销售金额
   })
   // const [showModal, setShowModal] = useState(false)
-  const isLogin = '124235435634645' //getData('token')
+  const isLogin = getData('token')
 
   useEffect(() => {
     if (!isLogin) {
@@ -44,7 +44,7 @@ const IndexPage = () => {
         }
       })
     } else {
-      // queryData()
+      queryData()
     }
   }, [])
 
@@ -52,9 +52,10 @@ const IndexPage = () => {
     // Taro.showModal()
     Taro.showLoading({ title: '数据加载中...', mask: true })
     try {
-      const res = await req.post(queryAccountBalance)
-      console.log('res>>', res)
-      // setData()
+      const {success = false, result = {}} = await req.post(queryAccountBalance)
+      if(success) {
+        setData({...data, ...result})
+      }
     } catch (err) {
       console.log(err)
     } finally {

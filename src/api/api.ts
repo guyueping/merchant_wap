@@ -5,3 +5,5 @@ export const withdraw = 'seller.account.withdraw' // 商家提现
 export const recharge = 'seller.account.recharge' // 商家充值
 export const queryBalanceTradeList = 'seller.account.queryBalanceTradeList' // 查询商家账户流水
 
+export const login = 'seller.zhaoshang.register.merchantLogin' // 登录
+
