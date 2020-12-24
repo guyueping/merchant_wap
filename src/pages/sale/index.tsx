@@ -1,12 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Image } from '@tarojs/components'
 import List, { ListLayout } from '@/components/list'
+import req from '@/utils/mnRequest'
+import { queryMerchantSalesDetail } from '@/api/api'
 import styles from './index.module.styl'
 import MnLayout from '@/components/mnLayout'
+import { getWifiList } from '@tarojs/taro'
 
 const SaleList = () => {
   const [showLoading, setShowLoading] = useState(false)
   const [goodList, setGoodList] = useState([1, 2, 3, 4, 5])
+
+  useEffect(() => {
+    getList()
+  }, [])
+  const getList = async () => {
+    let { res } = await req.post(
+      queryMerchantSalesDetail,
+      {
+        pageSize: 1,
+        pageNumber: 10
+      }
+    )
+  }
   const onScrollToLower = () => {
     setShowLoading(true)
     const list = goodList
