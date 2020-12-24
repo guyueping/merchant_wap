@@ -65,7 +65,7 @@ const ResetPwd = () => {
     countDown(60)
     // try {
     //   const dataVal = { mobile: phoneVal, captchaType: 6 }
-    //   const res = await req.post({ apiUrl: 'captcha.sms',  dataVal })
+    //   const res = await req.post('captcha.sms',  dataVal)
     //   if (res.success) {
     //     showMsg('短信发送成功')
     //     setCount(60)
@@ -117,7 +117,7 @@ const ResetPwd = () => {
 
   const doUpdate = async (dataVal: any) => {
     try {
-      const res = await req.post({ apiUrl: 'login.modPw.captcha',  dataVal:params })
+      const res = await req.post('login.modPw.captcha',  params)
       if (res.success) {
         showMsg('密码修改成功')
         Taro.navigateTo({url: '/pages/login/index'})

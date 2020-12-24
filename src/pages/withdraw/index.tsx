@@ -33,7 +33,7 @@ const Withdraw = () => {
     // Taro.showModal()
     Taro.showLoading({title: '数据加载中...', mask: true })
     try {
-      const res = await req.post({ apiUrl: queryAccountBalance })
+      const res = await req.post( queryAccountBalance)
       console.log('res>>', res)
       // setData()
     } catch(err) {
@@ -120,7 +120,7 @@ const Withdraw = () => {
   const doWithdraw = async () => {
     Taro.showLoading({title: '提现处理中...', mask: true })
     try {
-      const res = await req.post({ apiUrl: withdraw, dataVal: {amount: inputRef.current.value * 1} })
+      const res = await req.post(withdraw, {amount: inputRef.current.value * 1})
       console.log('res>>', res)
       // setData()
     } catch(err) {

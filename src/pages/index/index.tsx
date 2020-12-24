@@ -52,7 +52,7 @@ const IndexPage = () => {
     // Taro.showModal()
     Taro.showLoading({ title: '数据加载中...', mask: true })
     try {
-      const res = await req.post({ apiUrl: queryAccountBalance })
+      const res = await req.post(queryAccountBalance)
       console.log('res>>', res)
       // setData()
     } catch (err) {
