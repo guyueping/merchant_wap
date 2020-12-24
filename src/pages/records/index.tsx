@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import Taro, { useShareAppMessage, usePullDownRefresh, useReachBottom } from '@tarojs/taro'
-import { View, Text, Picker, ScrollView } from '@tarojs/components'
+import Taro, { useShareAppMessage } from '@tarojs/taro'
+import { View, Text } from '@tarojs/components'
 import List, { ListLayout } from '@/components/list'
 import DatePicker from '@/components/datePicker'
 import PopSelect from '@/components/popSelect'
 import MnLayout from '@/components/mnLayout'
 import Tags from '@/components/tag'
+import req from '@/utils/mnRequest'
+import { queryBalanceTradeList } from '@/api/api'
 import ListItem from './listItem/index'
 import './index.styl'
+import { getDate, typeAry, statusAry, status, I_TradeRecords } from './constants'
+import mockData from './mockData'
+
 // import styles from './index.modules.styl'
-const getDate = () => {
-  const date = new Date()
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  return {year, month}
-}
-const typeAry = ['全部', '提现', '垫付还款']
+
 const ary = [12]
-const status = [{label: '全部', value: 0}, {label: '处理中', value: 1}, {label: '交易成功', value: 2}, {label: '交易失败', value: 3}]
 const Records = () => {
   const {year, month} = getDate()
 
@@ -29,6 +27,33 @@ const Records = () => {
   const [selectedType, setSelectedType] = useState(0)
   const [currentMonth, setCurrentMonth] = useState(12)
   const [showLoading, setShowLoading] = useState(false)
+
+  const [reqData, setReqData] = useState({
+    balanceTradeType: 0, // 交易类型：0 全部，1 充值， 2 提现
+    tradeStatus: 0, // 交易状态：0 全部，1 处理中， 2 成功，3 失败
+    // tradeTimeFrom: // 开始时间 Timestamp
+    // tradeTimeTo: // 结束时间 Timestamp
+    page: 1,
+    size: 30
+  })
+
+  // useEffect(() => {
+  //   queryData()
+  // }, [reqData])
+
+  // const queryData = async () => {
+  //   // Taro.showModal()
+  //   Taro.showLoading({ title: '数据加载中...', mask: true })
+  //   try {
+  //     const res = await req.post(queryBalanceTradeList,reqData)
+  //     console.log('res>>', res)
+  //     // setData()
+  //   } catch (err) {
+  //     console.log(err)
+  //   } finally {
+  //     Taro.hideLoading()
+  //   }
+  // }
 
 
   useShareAppMessage(res => {
@@ -130,7 +155,7 @@ const ListItemWrap = (props:any) => {
         <View><Text className='month_text'>{props.month}</Text>月</View>
         <View className='small_text'>提现¥500.00，充值215.00</View>
       </View>
-      {Array(20).fill(0).map(each => <ListItem />)}
+      {mockData.map((each, index: number) => <ListItem data={each} key={index} />)}
     </View>
   )
 }

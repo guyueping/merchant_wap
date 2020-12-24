@@ -26,19 +26,19 @@ const Repay = () => {
     // queryData()
   }, [])
 
-  const queryData = async () => {
-    // Taro.showModal()
-    Taro.showLoading({title: '数据加载中...', mask: true })
-    try {
-      const res = await req.post({ apiUrl: queryAccountBalance })
-      console.log('res>>', res)
-      // setData()
-    } catch(err) {
-      console.log(err)
-    } finally {
-      Taro.hideLoading()
-    }
-  }
+  // const queryData = async () => {
+  //   // Taro.showModal()
+  //   Taro.showLoading({title: '数据加载中...', mask: true })
+  //   try {
+  //     const res = await req.post(queryAccountBalance)
+  //     console.log('res>>', res)
+  //     // setData()
+  //   } catch(err) {
+  //     console.log(err)
+  //   } finally {
+  //     Taro.hideLoading()
+  //   }
+  // }
 
   const handleInput = (e) => {
     if(!e.detail.value || reg.test(e.detail.value)) {
@@ -91,7 +91,7 @@ const Repay = () => {
   const doRepay = async () => {
     Taro.showLoading({title: '还款处理中...', mask: true })
     try {
-      const res = await req.post({ apiUrl: recharge, dataVal: {amount: inputRef.current.value * 1, payType: 0} })
+      const res = await req.post(recharge, {amount: inputRef.current.value * 1, payType: 0})
       console.log('res>>', res)
       // setData()
     } catch(err) {

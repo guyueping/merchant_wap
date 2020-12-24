@@ -19,19 +19,19 @@ const Mine = () => {
     // queryData()
   }, [])
 
-  const queryData = async () => {
-    // Taro.showModal()
-    Taro.showLoading({ title: '数据加载中...', mask: true })
-    try {
-      const res = await req.post({ apiUrl: queryAccountBalance })
-      console.log('res>>', res)
-      // setData()
-    } catch (err) {
-      console.log(err)
-    } finally {
-      Taro.hideLoading()
-    }
-  }
+  // const queryData = async () => {
+  //   // Taro.showModal()
+  //   Taro.showLoading({ title: '数据加载中...', mask: true })
+  //   try {
+  //     const res = await req.post(queryAccountBalance)
+  //     console.log('res>>', res)
+  //     // setData()
+  //   } catch (err) {
+  //     console.log(err)
+  //   } finally {
+  //     Taro.hideLoading()
+  //   }
+  // }
 
   const handleCancel = () => {
     console.log('handleCancel')
@@ -67,7 +67,7 @@ const Mine = () => {
             title='帮助'
             arrow='right'
             thumb={iconHelp}
-            onClick={() => { Taro.navigateTo({ url: `/pages/webView/index?url=${encodeURIComponent('https://miniwap.ypsx-internal.com/help/index.html')}` }) }}
+            onClick={() => { Taro.navigateTo({ url: `/pages/webView/index?url=${encodeURIComponent('https://pages.ypsx-internal.com/help/index.html')}` }) }}
           />
           <AtListItem
             title='修改登录密码'
