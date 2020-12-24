@@ -16,7 +16,8 @@ import './index.styl'
 
 const Login = () => {
   const { path, params = {} } = useRouter()
-  const { url = '/pages/index/index'} = params
+  const { url } = params
+  console.log('url====', url)
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [errMsg, setErrMsg] = useState('')
   const [phone, setPhone] = useState('')
@@ -84,7 +85,7 @@ const Login = () => {
         const {auditStatus, businessType, changeStatus, mobile, token} = result
         if(auditStatus === 7 && businessType === 1 && token) {
           setData('token', token)
-          Taro.navigateTo({url})
+          Taro.redirectTo({'url': (url ? `/${decodeURIComponent(url)}`: '/pages/index/index')})
         } else {
           showMsg('您还未开通谊商宝账号')
           // Taro.showToast({

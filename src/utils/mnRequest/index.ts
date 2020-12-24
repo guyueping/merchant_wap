@@ -126,12 +126,24 @@ export default class MnRequest {
       result = { success: false, result: {}, code: -1001, message: '系统异常' }
     }
     if (!result.success) {
+      let msg = result.message || ''
+      if (result.code === -60007 || result.code === -30104 || result.code === -32001 || result.code === -32002 || result.code === -32003) {
+        msg = '请先登录'
+        setTimeout(() => {
+          Taro.navigateTo({url: `/pages/login/index?url=${encodeURIComponent(getCurrentPageUrl())}`})
+        }, 2000)
+      }
       Taro.showToast({
-        title: result.message,
+        title: msg,
         icon: 'none',
         duration: 2000,
       })
     }
     return result
   }
+}
+
+const getCurrentPageUrl = () => {
+  const pages = Taro.getCurrentPages();
+  return pages[pages.length - 1].route
 }
