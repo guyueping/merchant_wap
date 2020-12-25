@@ -58,8 +58,8 @@ const SaleList = () => {
     let { result } = await req.post(
       queryMerchantSalesDetail,
       {
-        pageSize,
-        pageNumber: page,
+        size: pageSize,
+        page,
         saleDate: moment(now)
       }
     )
