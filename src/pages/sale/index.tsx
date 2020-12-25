@@ -6,35 +6,53 @@ import { queryMerchantSalesDetail } from '@/api/api'
 import styles from './index.module.styl'
 import MnLayout from '@/components/mnLayout'
 import { getWifiList } from '@tarojs/taro'
-
+interface detailItem {
+  merchantId: string,
+  merchantName: string
+  merchantItemId: string,
+  merchantItemSkuId: string,
+  saleDate: string,
+  specificationDesc: string,
+  cover: string,
+  skuQuantity: number,
+  skuStock: number,
+  sales: number
+}
 const SaleList = () => {
   const [showLoading, setShowLoading] = useState(false)
-  const [goodList, setGoodList] = useState([1, 2, 3, 4, 5])
+  const [goodList, setGoodList] = useState<Array<detailItem>>([])
+  const [pageSize, setPageSize] = useState(1)
+  const [pageNumber, setzPageNumber] = useState(10)
+  const [isEnd, setisEnd] = useState(false)
 
   useEffect(() => {
     getList()
   }, [])
   const getList = async () => {
-    let { res } = await req.post(
+    setShowLoading(true)
+    let { result } = await req.post(
       queryMerchantSalesDetail,
       {
-        pageSize: 1,
-        pageNumber: 10
+        pageSize,
+        pageNumber
       }
     )
+    if (result) {
+      const { merchantSaleDetail = [], page, isEnd } = result
+      console.log(">>> result", result)
+      const l = goodList.concat(merchantSaleDetail)
+      setGoodList(l)
+      setPageSize(page + 1)
+      setShowLoading(false)
+      setisEnd(isEnd)
+    }
   }
   const onScrollToLower = () => {
-    setShowLoading(true)
-    const list = goodList
-    setTimeout(() => {
-      for (let i = 0; i <= 9; i++) {
-        list.push(goodList.length + 1)
-      }
-      console.log(">>>", list.length)
-      setGoodList(list)
-      setShowLoading(false)
-    }, 1000)
-
+    console.log(">>>>srcoll", isEnd)
+    if (isEnd) {
+      return
+    }
+    getList()
   }
   const listItem = (it) => {
     return (
