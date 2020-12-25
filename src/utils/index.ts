@@ -3,12 +3,6 @@ import moment from 'moment'
 /**
  * @description 获取当前页url
  */
-// Taro.getStorage({
-//   key: 'sjtoken'
-// })
-// Taro.setStorage({ key: 'sjtoken', data: '123124' })
-// Taro.getStorageSync('sjtoken')
-// Taro.removeStorageSync('sjtoken')
 
 export const getCurrentPageUrl = () => {
   let pages = Taro.getCurrentPages()
@@ -27,10 +21,10 @@ export const pageToLogin = () => {
 }
 
 export const getEnv = () => {
-  let env =  process.env.NODE_ENV
-  if(env === 'development') {
+  let env = process.env.NODE_ENV
+  if (env === 'development') {
     return 'dev'
-  } else if(env === 'testEnv') {
+  } else if (env === 'testEnv') {
     return 'test'
   }
   return env
@@ -57,7 +51,7 @@ export const showMsg = (msg: string) => {
     title: msg,
     icon: 'none',
     duration: 2000,
-    fail: function(){},
+    fail: function () { },
     complete: () => {
       Taro.hideToast()
     }
@@ -65,7 +59,7 @@ export const showMsg = (msg: string) => {
 }
 
 export const moneyFormat = (num: number = 0) => {
-  return (num.toString().indexOf ('.') !== -1) ? num.toLocaleString() : num.toFixed(2).replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+  return (num.toString().indexOf('.') !== -1) ? num.toLocaleString() : num.toFixed(2).replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
 }
 //拉下刷新
 export const pullDownReload = (e: any, refresh: () => void) => {
@@ -98,4 +92,27 @@ export const formatTime = date => {
 export const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
+}
+
+//连续刷新频繁提示
+let ifCanReload = true
+export const delayAction = (second: number = 5, fun) => {
+  if (ifCanReload) {
+    Taro.hideToast()
+    fun()
+    ifCanReload = false
+    setTimeout(() => {
+      ifCanReload = true
+    }, second * 1000);
+  } else {
+    Taro.showToast({
+      title: `请稍后再试`,
+      icon: 'none',
+      duration: 2000,
+    })
+  }
+}
+//超出部分省略
+export const ellipsis = (str, num = 10) => {
+  return `${str.substr(0, num)}${str.length > num ? '...' : ''}`
 }
