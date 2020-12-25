@@ -37,23 +37,25 @@ const Records = () => {
     size: 30
   })
 
-  // useEffect(() => {
-  //   queryData()
-  // }, [reqData])
+  useEffect(() => {
+    queryData()
+  }, [reqData])
 
-  // const queryData = async () => {
-  //   // Taro.showModal()
-  //   Taro.showLoading({ title: '数据加载中...', mask: true })
-  //   try {
-  //     const res = await req.post(queryBalanceTradeList,reqData)
-  //     console.log('res>>', res)
-  //     // setData()
-  //   } catch (err) {
-  //     console.log(err)
-  //   } finally {
-  //     Taro.hideLoading()
-  //   }
-  // }
+  const queryData = async () => {
+    // Taro.showModal()
+    Taro.showLoading({ title: '数据加载中...', mask: true })
+    try {
+      const {success = false, result = {}} = await req.post(queryBalanceTradeList,reqData)
+      const {isEnd, list = [], page, size, total, summary = {}} = result
+
+      // console.log('res>>', res)
+      // setData()
+    } catch (err) {
+      console.log(err)
+    } finally {
+      Taro.hideLoading()
+    }
+  }
 
 
   useShareAppMessage(res => {

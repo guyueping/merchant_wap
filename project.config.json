@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "dist/",
-  "projectname": "taroRedux",
-  "description": "taro with redux",
+  "projectname": "谊商宝",
+  "description": "谊品生鲜供应商小程序",
   "appid": "wx4a48efb72145fee2",
   "setting": {
     "urlCheck": false,

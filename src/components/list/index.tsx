@@ -3,6 +3,7 @@ import Taro from '@tarojs/taro'
 import { View, ScrollView } from '@tarojs/components'
 import BirdLoading from '@/components/birdLoading'
 import LoadMore from '@/components/loadMore'
+import { StatusEmpty } from '@/components/status'
 import styles from './index.module.styl'
 
 interface I_Scroll {
@@ -73,7 +74,7 @@ const List = (props: I_Scroll) => {
       <View className={styles.mainpagecontainer}>
         <BirdLoading />
       </View>
-      {props.children}
+      {props.children ? props.children : <StatusEmpty moreInfo='暂无记录' style={{ paddingTop: 60 }} />}
       <LoadMore showLoading={props.showLoadMore} />
     </ScrollView>
   )
