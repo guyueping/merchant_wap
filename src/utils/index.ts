@@ -72,7 +72,7 @@ export const pullDownReload = (e: any, refresh: () => void) => {
   refresh instanceof Function && e.currentTarget.offsetTop > 45 && refresh()
 }
 
-export const getTimeStamp = (year, month, day, hour, minute, seconds, formatstr = '') => { // 'YYYY-MM-dd[T]hh:mm:ss[.999Z]'
+export const getTimeStamp = (year, month, day, hour, minute, seconds, formatstr = '') => { // YYYY-MM-dd[T]hh:mm:ss[.999Z]   yyyy-MM-dd HH:mm:ss
   return moment(new Date(year, month, day, hour, minute, seconds)).format(formatstr)
 }
 
