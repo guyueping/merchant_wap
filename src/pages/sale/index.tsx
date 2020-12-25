@@ -38,7 +38,7 @@ const SaleList = () => {
     getInit()
   }, [])
   const getInit = () => {
-    const now: any = moment('2020-12-22 10:10').format('YYYY-MM-DD HH:mm')
+    const now: any = moment().format('YYYY-MM-DD HH:mm')
     setDate(now)
     getList({ now, page: 1 })
     getSales()
@@ -107,10 +107,10 @@ const SaleList = () => {
     <MnLayout arrowType={2} title='实时销售' hideArrow={false} navStyle={{ backgroundColor: '#4F5AF7', color: '#ffffff' }} statusBarStyle={{ backgroundColor: '#4F5AF7' }}>
       <ListLayout className={styles.content}>
         <View className={styles.top}>
-          <Text className={styles.left}>今日数据</Text>
-          <View className={styles.right}>{date}
-            {/* <View className={`at-icon at-icon-reload ${styles.icon_reload}`}></View> */}
-          </View>
+          <Text className={styles.left}>{date}</Text>
+          {/* <View className={styles.right}>{date}
+            <View className={`at-icon at-icon-reload ${styles.icon_reload}`}></View>
+          </View> */}
         </View>
         <View className={styles.cardbox}>
           <View className={styles.item}>
