@@ -7,7 +7,7 @@ import moment from 'moment'
 import Taro from "@tarojs/taro";
 import styles from './index.module.styl'
 import MnLayout from '@/components/mnLayout'
-import { delayAction } from '@/utils'
+import { delayAction, ellipsis } from '@/utils'
 import { getWifiList } from '@tarojs/taro'
 import { getDate } from '../records/constants'
 interface detailItem {
@@ -38,7 +38,7 @@ const SaleList = () => {
     getInit()
   }, [])
   const getInit = () => {
-    const now: any = moment().format('YYYY-MM-DD HH:mm')
+    const now: any = moment('2020-12-22 10:10').format('YYYY-MM-DD HH:mm')
     setDate(now)
     getList({ now, page: 1 })
     getSales()
@@ -83,6 +83,7 @@ const SaleList = () => {
       getInit()
     })
   }
+
   const listItem = (it: detailItem) => {
     return (
 
@@ -91,7 +92,7 @@ const SaleList = () => {
           src='https://camo.githubusercontent.com/3e1b76e514b895760055987f164ce6c95935a3aa/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f6d74642f686f6d652f6c6f676f2d3278313531333833373932363730372e706e67'
         /> */}
         <View className={styles.right}>
-          <View className={styles.head}>{it.merchantName} {it.specificationDesc}</View>
+          <View className={styles.head}>{ellipsis(`${it.merchantName}`, 34)} {it.specificationDesc}</View>
           <View className={styles.bottom}>
             <Text className={styles.price}>¥{it.sales}</Text>
             <Text>已售<Text className={styles.strong}>{it.skuQuantity}</Text>份</Text>

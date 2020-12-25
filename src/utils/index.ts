@@ -102,3 +102,7 @@ export const delayAction = (second: number = 5, fun) => {
     })
   }
 }
+//超出部分省略
+export const ellipsis = (str, num = 10) => {
+  return `${str.substr(0, num)}${str.length > num ? '...' : ''}`
+}
