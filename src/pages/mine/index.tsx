@@ -67,7 +67,7 @@ const Mine = () => {
             title='帮助'
             arrow='right'
             thumb={iconHelp}
-            onClick={() => { Taro.navigateTo({ url: `/pages/webView/index?url=${encodeURIComponent('https://pages.ypsx-internal.com/help/index.html')}` }) }}
+            onClick={() => { Taro.navigateTo({ url: `/pages/webView/index?url=${encodeURIComponent('https://universal-h5.ypshengxian.com/help/index.html')}` }) }}
           />
           <AtListItem
             title='修改登录密码'

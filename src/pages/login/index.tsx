@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Input } from '@tarojs/components'
+import { View, Input, Navigator } from '@tarojs/components'
 import Taro, { useRouter } from '@tarojs/taro'
 import Header from '@/components/header'
 // import captcha from 'captcha'
@@ -12,7 +12,6 @@ import { phone_reg, password_reg } from '@/utils/reg'
 import { showMsg } from '@/utils/index'
 import { getData, setData } from '@/utils/ypStore'
 import './index.styl'
-import {getStartTimeStamp, getEndTimeStamp} from '@/utils/index'
 
 const Login = () => {
   const { path, params = {} } = useRouter()
@@ -25,8 +24,6 @@ const Login = () => {
 
   useEffect(() => {
     // getGeeTest()
-   console.log(getStartTimeStamp(2020, 12))
-   console.log(getEndTimeStamp(2020, 12))
   }, [])
 
   const getGeeTest = async () => {
@@ -131,25 +128,27 @@ const Login = () => {
         )}
         <AtButton className='login_button' disabled={btnDisabled} onClick={handleLogin}>登录</AtButton>
         <View className='link_button_box flex_center_center_row'>
-          <View className='link_button' onClick={() => { Taro.navigateTo({url: `/pages/webView/index?url=${encodeURIComponent('https://pages.ypsx-internal.com/settleIn/index.html')}`})}}>申请入驻</View>
+          <View className='link_button' onClick={() => { Taro.navigateTo({url: `/pages/webView/index?url=${encodeURIComponent('https://universal-h5.ypshengxian.com/settleIn/index.html')}`})}}>申请入驻</View>
           <View className='divide'></View>
           <View className='link_button' onClick={() => { Taro.navigateTo({ url: '/pages/resetPwd/index?type=2' })}}>忘记密码</View>
         </View>
       </View>
+      <geeTest />
       {/* {gData?.loadCaptcha && (
         <captcha
-          styleConfig={{width: '100%', height: '200px', background: '#ff0000'}}
-          id='captcha' 
-          loadCaptcha={gData.loadCaptcha} 
-          gt={gData.gt} 
-          challenge={getData.challenge} 
-          offline={getData.offline} 
-          onSuccess={() => {console.log('bindonSuccess')}}
-          onReady={() => {console.log('bindonReady')}} 
-          onClose={() => {console.log('bindonClose')}} 
-          onError={() => {console.log('bindonError')}}
+          // styleConfig={{width: '100%', height: '200px', background: '#ff0000'}}
+          // id='captcha' 
+          // loadCaptcha={gData.loadCaptcha} 
+          // gt={gData.gt} 
+          // challenge={getData.challenge} 
+          // offline={getData.offline} 
+          // onSuccess={() => {console.log('bindonSuccess')}}
+          // onReady={() => {console.log('bindonReady')}} 
+          // onClose={() => {console.log('bindonClose')}} 
+          // onError={() => {console.log('bindonError')}}
         />
       )} */}
+      
     </View>
   )
 }

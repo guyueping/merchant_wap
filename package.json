@@ -44,6 +44,7 @@
     "@tarojs/taro": "3.0.18",
     "axios": "^0.21.0",
     "cross-env": "^7.0.3",
+    "geetest": "^4.1.2",
     "install": "^0.13.0",
     "moment": "^2.29.1",
     "nervjs": "^1.5.7",

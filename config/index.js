@@ -19,9 +19,10 @@ const config = {
   },
   copy: {
     patterns: [
+      { from: 'src/components/geeTest/index.wxss', to: 'dist/components/geeTest/index.wxss'},
+      { from: 'src/components/geeTest/index.wxml', to: 'dist/components/geeTest/index.wxml'}
     ],
-    options: {
-    }
+    options: {}
   },
   alias: {
     '@/': resolvePath('src'),
