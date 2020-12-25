@@ -77,7 +77,7 @@ export default class MnRequest {
           header: {
             'Content-Type': 'application/json;charset=UTF-8',
             'app-id': 'ypsj',
-            'app-platform': 'wap'
+            'app-platform': 'wxApp'
           },
           dataType: 'json',
           data: paramsObj,
@@ -126,6 +126,21 @@ export default class MnRequest {
       result = { success: false, result: {}, code: -1001, message: '系统异常' }
     }
     if (!result.success) {
+      if (result.code === -60007 || result.code === -30104 || result.code === -32001 || result.code === -32002 || result.code === -32003) {
+        Taro.showModal({
+          title: '温馨提示',
+          content: '未登录或登录已过期，请登录',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              Taro.navigateTo({url: `/pages/login/index?url=${encodeURIComponent(getCurrentPageUrl())}`})
+            }
+          }
+        })
+        // setTimeout(() => {
+        //   Taro.navigateTo({url: `/pages/login/index?url=${encodeURIComponent(getCurrentPageUrl())}`})
+        // }, 2000)
+      }
       Taro.showToast({
         title: result.message,
         icon: 'none',
@@ -134,4 +149,9 @@ export default class MnRequest {
     }
     return result
   }
+}
+
+const getCurrentPageUrl = () => {
+  const pages = Taro.getCurrentPages();
+  return pages[pages.length - 1].route
 }

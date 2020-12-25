@@ -32,7 +32,7 @@ const Records = () => {
     balanceTradeType: 0, // 交易类型：0 全部，1 充值， 2 提现
     tradeStatus: 0, // 交易状态：0 全部，1 处理中， 2 成功，3 失败
     // tradeTimeFrom: // 开始时间 Timestamp
-    // tradeTimeTo: // 结束时间 Timestamp
+    // tradeTimeTo: // 结束时间 Timestamp newData(2020,12,0) 23:59:59
     page: 1,
     size: 30
   })

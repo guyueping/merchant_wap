@@ -17,7 +17,7 @@ export default {
     'pages/bill/index',
     'pages/records/index',
     'pages/webView/index',
-    'pages/forgetPwd/index',
+    // 'pages/forgetPwd/index',
     'pages/resetPwd/index',
     'pages/withdraw/index',
     'pages/repay/index',
@@ -27,7 +27,7 @@ export default {
   ],
   plugins:{
     myPlugin: {
-      version: '1.3.0',
+      version: '1.3.1',
       provider: 'wxefa63d84fe9f64a2'
     }
   },

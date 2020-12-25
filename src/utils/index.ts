@@ -1,4 +1,5 @@
 import Taro from "@tarojs/taro";
+import moment from 'moment'
 /**
  * @description 获取当前页url
  */
@@ -69,4 +70,16 @@ export const moneyFormat = (num: number = 0) => {
 //拉下刷新
 export const pullDownReload = (e: any, refresh: () => void) => {
   refresh instanceof Function && e.currentTarget.offsetTop > 45 && refresh()
+}
+
+export const getTimeStamp = (year, month, day, hour, minute, seconds, formatstr = '') => { // 'YYYY-MM-dd[T]hh:mm:ss[.999Z]'
+  return moment(new Date(year, month, day, hour, minute, seconds)).format(formatstr)
+}
+
+export const getEndTimeStamp = (year, month, formatstr = '') => {
+  return getTimeStamp(year, month, 0, 23, 59, 59, formatstr)
+}
+
+export const getStartTimeStamp = (year, month, formatstr = '') => {
+  return getTimeStamp(year, month - 1, 1, 0, 0, 0, formatstr)
 }
