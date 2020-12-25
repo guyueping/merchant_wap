@@ -8,10 +8,10 @@ import iconTask from '@/images/icon_task.png'
 // import iconOrder from '@/images/icon_order.png'
 import iconTotal from '@/images/icon_total.png'
 import iconBill from '@/images/icon_bill.png'
-import Modal from '@/components/modal'
+// import Modal from '@/components/modal'
 import MnLayout from '@/components/mnLayout'
 import req from '@/utils/mnRequest'
-import { queryAccountBalance } from '@/api/api'
+import { queryAccountBalance, queryMerchantSales } from '@/api/api'
 import { getData } from '@/utils/ypStore'
 import './index.styl'
 
@@ -26,9 +26,8 @@ const IndexPage = () => {
     withdrawableAmount: 0.00,  // 可提现金额
     frozedAmount: 0.00,  // 冻结金额
     availableAmount: 0.00, // 可用余额
-    saleAmount: 0.00 // 今日销售金额
+    totalSales: 0.00 // 今日销售金额
   })
-  // const [showModal, setShowModal] = useState(false)
   const isLogin = getData('token')
 
   useEffect(() => {
@@ -45,11 +44,11 @@ const IndexPage = () => {
       })
     } else {
       queryData()
+      getMerchantSales()
     }
   }, [])
 
   const queryData = async () => {
-    // Taro.showModal()
     Taro.showLoading({ title: '数据加载中...', mask: true })
     try {
       const {success = false, result = {}} = await req.post(queryAccountBalance)
@@ -60,6 +59,19 @@ const IndexPage = () => {
       console.log(err)
     } finally {
       Taro.hideLoading()
+    }
+  }
+
+  const getMerchantSales = async () => {
+    try {
+      const {success = false, result = {}} = await req.post(queryMerchantSales)
+      if(success) {
+        setData({ ...data, totalSales: result.totalSales || 0 })
+      }
+    } catch (err) {
+      console.log(err)
+    } finally {
+
     }
   }
 
@@ -78,9 +90,6 @@ const IndexPage = () => {
   // console.log('process>>', process.env.NODE_ENV)
   // }, [])
 
-  // useEffect(() => {
-  //   goTo('/pages/login/index')
-  // }, [])
 
   const handleGridEvent = (index: number) => {
     goTo(`/pages/${pageList[index]}/index`)
@@ -90,17 +99,6 @@ const IndexPage = () => {
     navigateTo({ url })
   }
 
-  // const goWithDraw = () => {
-  //   if(!data.withdrawableAmount) {
-  //     Taro.showToast({
-  //       title: '没有可提现的资金',
-  //       icon: 'none',
-  //       duration: 2000
-  //     })
-  //   } else {
-  //     handleGridEvent(1)
-  //   }
-  // }
 
   return (
     <MnLayout tabPath='/pages/index/index' title='谊品生鲜供应商' hideArrow navStyle={{ backgroundColor: '#4F5AF7', color: '#ffffff' }} statusBarStyle={{ backgroundColor: '#4F5AF7' }}>
@@ -116,11 +114,11 @@ const IndexPage = () => {
           </View>
           <View className='amount_container'>
             <View className='amount_wrap'>
-              <View className='amount'>{isLogin ? (data.settledAdvanceAmount * 1).toFixed(2) : '*****'}</View>
+              <View className='amount'>{isLogin ? (data.waitSettledAmount * 1).toFixed(2) : '*****'}</View>
               <View className='amount_name'>待结算金额(元)</View>
             </View>
             <View className='amount_wrap'>
-              <View className='amount'>{isLogin ? (data.saleAmount * 1).toFixed(2) : '*****'}</View>
+              <View className='amount'>{isLogin ? (data.totalSales * 1).toFixed(2) : '*****'}</View>
               <View className='amount_name'>今日销售额(元)</View>
             </View>
           </View>

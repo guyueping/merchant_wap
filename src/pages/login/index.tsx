@@ -133,10 +133,16 @@ const Login = () => {
           <View className='link_button' onClick={() => { Taro.navigateTo({ url: '/pages/resetPwd/index?type=2' })}}>忘记密码</View>
         </View>
       </View>
-      <geeTest />
+      {/* <geeTest /> */}
+      <captcha 
+        id="captcha" 
+        gt="{{gt}}" 
+        loadCaptcha={gData.loadCaptcha} 
+        challenge="{{challenge}}" 
+        offline="{{offline}}"  
+        bindonSuccess="captchaSuccess"/>
       {/* {gData?.loadCaptcha && (
         <captcha
-          // styleConfig={{width: '100%', height: '200px', background: '#ff0000'}}
           // id='captcha' 
           // loadCaptcha={gData.loadCaptcha} 
           // gt={gData.gt} 

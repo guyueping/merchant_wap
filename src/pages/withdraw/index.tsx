@@ -8,6 +8,7 @@ import { queryAccountBalance } from '@/api/api'
 import './index.styl'
 import { withdraw } from '@/api/api'
 import MnLayout from '@/components/mnLayout'
+import { showMsg } from '@/utils/index'
 
 const  reg = /^(\d)+.?(\d){0,2}$/;
 
@@ -17,11 +18,13 @@ const Withdraw = () => {
   const inputRef = useRef()
   const prevInput = useRef('')
   const [data, setData] = useState({
-    waitSettledAmount: 0.00, // 待结算金额
-    settledAdvanceAmount: 0, //108.00,	// 欠款结算金额 ：平台垫付金账户金额
+    // waitSettledAmount: 0.00, // 待结算金额
+    settledAdvanceAmount: 108.00,	// 欠款结算金额 ：平台垫付金账户金额
     withdrawableAmount: 508.68,  // 可提现金额
-    frozedAmount: 0.00,  // 冻结金额
-    availableAmount: 0.00 // 可用余额
+    bankAccount: '2143124325678',
+    openingBank: '招商银行'
+    // frozedAmount: 0.00,  // 冻结金额
+    // availableAmount: 0.00 // 可用余额
   })
 
 
@@ -90,27 +93,15 @@ const Withdraw = () => {
     }
     const val = inputRef.current.value
     if(!val) {
-      Taro.showToast({
-        title: '请输入提现金额',
-        icon: 'none',
-        duration: 2000
-      }) 
+      showMsg('请输入提现金额')
       return false
     }
     if(val * 1 < 10) {
-      Taro.showToast({
-        title: '提现金额至少10元',
-        icon: 'none',
-        duration: 2000
-      }) 
+      showMsg('提现金额至少10元') 
       return false
     }
     if(val * 1 > data.withdrawableAmount) {
-      Taro.showToast({
-        title: `可提现金额最多为${data.withdrawableAmount}`,
-        icon: 'none',
-        duration: 2000
-      }) 
+      showMsg(`可提现金额最多为${data.withdrawableAmount}`)
       inputRef.current.value = data.withdrawableAmount
       return false
     }
@@ -149,7 +140,7 @@ const Withdraw = () => {
             <View className='card_head'>
               <View>到账银行</View>
               <View className='card_info'>
-                <View className='card_num'>招商银行 储存卡（3899）</View>
+                <View className='card_num'>{data.openingBank} 储存卡（{data.bankAccount.substr(-4)}）</View>
                 <View className='time'>2小时内到账</View>
               </View>
             </View>
@@ -181,7 +172,7 @@ const Withdraw = () => {
         <Modal 
           show={showModal} 
           content={<View>当前平台垫付资金<Text className='red'>-¥{data.settledAdvanceAmount}元</Text>请先处理欠款后可正常提现</View>} 
-          popWarning={true} 
+          popWarning
           onCancel={() => {setShowModal(false)}} 
           confirmText='立即处理'
           onConfirm={() => {setShowModal(false); Taro.navigateTo({url: '/pages/repay/index'}); }}

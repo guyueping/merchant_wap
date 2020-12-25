@@ -3,12 +3,6 @@ import moment from 'moment'
 /**
  * @description 获取当前页url
  */
-// Taro.getStorage({
-//   key: 'sjtoken'
-// })
-// Taro.setStorage({ key: 'sjtoken', data: '123124' })
-// Taro.getStorageSync('sjtoken')
-// Taro.removeStorageSync('sjtoken')
 
 export const getCurrentPageUrl = () => {
   let pages = Taro.getCurrentPages()
@@ -52,7 +46,7 @@ export const getBaseUrl = (apiName?: string) => {
 }
 
 export const showMsg = (msg: string) => {
-  console.log('showMsg:msg>>>', msg)
+  // console.log('showMsg:msg>>>', msg)
   Taro.showToast({
     title: msg,
     icon: 'none',
@@ -82,6 +76,22 @@ export const getEndTimeStamp = (year, month, formatstr = '') => {
 
 export const getStartTimeStamp = (year, month, formatstr = '') => {
   return getTimeStamp(year, month - 1, 1, 0, 0, 0, formatstr)
+}
+
+export const formatTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+export const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
 }
 
 //连续刷新频繁提示

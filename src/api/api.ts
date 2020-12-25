@@ -7,6 +7,6 @@ export const queryBalanceTradeList = 'seller.account.queryBalanceTradeList' // �
 
 export const login = 'seller.zhaoshang.register.merchantLogin' // 登录
 
-
 export const queryMerchantSalesDetail = 'seller.merchant.sales.queryMerchantSalesDetail' //营业额明细
+
 export const queryMerchantSales = 'seller.merchant.sales.queryMerchantSales' //查询商家当日营业额汇总

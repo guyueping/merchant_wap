@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
+import { AtButton } from 'taro-ui'
 import Modal from '@/components/modal'
 import req from '@/utils/mnRequest'
 import { queryAccountBalance } from '@/api/api'
@@ -15,24 +16,22 @@ const Account = () => {
   const [showToolTip, setShowToolTip] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [data, setData] = useState({
-    waitSettledAmount: 0.00, // 待结算金额
-    settledAdvanceAmount: 108.00,	// 欠款结算金额 ：平台垫付金账户金额
-    withdrawableAmount: 508.68,  // 可提现金额
-    frozedAmount: 0.00,  // 冻结金额
-    availableAmount: 0.00 // 可用余额
+    // waitSettledAmount: 0.00, // 待结算金额
+    settledAdvanceAmount: 0.00,	// 欠款结算金额 ：平台垫付金账户金额
+    withdrawableAmount: 0.00,  // 可提现金额
+    // frozedAmount: 0.00,  // 冻结金额
+    // availableAmount: 0.00 // 可用余额
   })
 
   useEffect(() => {
-    // queryData()
+    queryData()
   }, [])
 
   const queryData = async () => {
-    // Taro.showModal()
     Taro.showLoading({ title: '数据加载中...', mask: true })
     try {
-      const res = await req.post(queryAccountBalance)
-      console.log('res>>', res)
-      // setData()
+      const { success = false, result = {}} = await req.post(queryAccountBalance)
+      success && setData({...data, ...result})
     } catch (err) {
       console.log(err)
     } finally {
@@ -68,19 +67,19 @@ const Account = () => {
               <View className={`toolTip ${showToolTip ? ' show_toolTip' : ''}`}>垫付资金是当给用户退款时，如原订单资金已过结算周期，则平台会优先垫付资金完成退款，此处即为平台垫付金额。</View>
             </View>
             <Text>当前平台垫付资金欠款</Text>
-            <Text className='red'>{data.settledAdvanceAmount}元</Text>
+            <Text className='red'>{(data.settledAdvanceAmount * 1).toFixed(2)}元</Text>
             <Text>，请及时还款后可正常提现</Text>
           </View>
         )}
         <View className='inner_box flex_center_start_column'>
           <View className='withdraw_title'>可提现金额</View>
-          <View className='withdraw_amount'><Text className='withdraw_unit'>¥</Text>{data.withdrawableAmount}</View>
+          <View className='withdraw_amount'><Text className='withdraw_unit'>¥</Text>{(data.withdrawableAmount * 1).toFixed(2)}</View>
           <View className='record_button flex_center_center_row' onClick={() => { Taro.navigateTo({ url: '/pages/records/index' }) }}>查看资金记录</View>
-          <View className={data.settledAdvanceAmount > 0 ? 'withdraw_button' : 'repay_button'} onClick={handleWithdraw}>提现</View>
-          {data.settledAdvanceAmount > 0 && <View className='repay_button' onClick={() => { Taro.navigateTo({ url: '/pages/repay/index' }) }}>去还款</View>}
+          <AtButton className={data.settledAdvanceAmount > 0 ? 'withdraw_button' : 'repay_button'} onClick={handleWithdraw} disabled={!!(data.withdrawableAmount * 1 === 0)}>提现</AtButton>
+          {data.settledAdvanceAmount > 0 && <AtButton className='repay_button' onClick={() => { Taro.navigateTo({ url: '/pages/repay/index' }) }}>去还款</AtButton>}
           <Modal
             show={showModal}
-            content={<View>当前平台垫付资金<Text className='red'>-¥{data.settledAdvanceAmount}元</Text>请先处理欠款后可正常提现</View>}
+            content={<View>当前平台垫付资金<Text className='red'>-¥{(data.settledAdvanceAmount * 1).toFixed(2)}元</Text>请先处理欠款后可正常提现</View>}
             popWarning
             onCancel={() => { setShowModal(false) }}
             confirmText='立即处理'
