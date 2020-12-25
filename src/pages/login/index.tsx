@@ -13,11 +13,9 @@ import { showMsg } from '@/utils/index'
 import { getData, setData } from '@/utils/ypStore'
 import './index.styl'
 
-
 const Login = () => {
   const { path, params = {} } = useRouter()
   const { url } = params
-  console.log('url====', url)
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [errMsg, setErrMsg] = useState('')
   const [phone, setPhone] = useState('')
@@ -45,10 +43,16 @@ const Login = () => {
     if(success) {
       const { challenge, gt, newCaptcha, success: suc } = result
       const d = { loadCaptcha: true, gt, challenge, offline: !suc }
-      console.log(d)
       setGData(d)
     }
   }
+
+  useEffect(() => {
+    console.log('gData>>>', gData)
+    const { page} = Taro.getCurrentInstance()
+    const a = page.selectComponent('#captcha')
+    console.log('=====', a)
+  }, [gData])
 
 
   const handleChange = (e, fieldName) => {
@@ -79,6 +83,7 @@ const Login = () => {
       setErrMsg('账号或密码错误')
       return false
     }
+    Taro.showLoading({ title: '登录中...', mask: true })
     try{
       const { success = false, result = {} } = await req.post(login,  { mobile: phoneVal, password: pwdVal })
       if(success) {
@@ -88,17 +93,12 @@ const Login = () => {
           Taro.redirectTo({'url': (url ? `/${decodeURIComponent(url)}`: '/pages/index/index')})
         } else {
           showMsg('您还未开通谊商宝账号')
-          // Taro.showToast({
-          //   title: '您还未开通谊商宝账号',
-          //   icon: 'none',
-          //   duration: 2000
-          // })
         }
       }
     } catch(err){
 
     } finally {
-
+      Taro.hideLoading()
     }
   }
 
@@ -133,21 +133,20 @@ const Login = () => {
           <View className='link_button' onClick={() => { Taro.navigateTo({ url: '/pages/resetPwd/index?type=2' })}}>忘记密码</View>
         </View>
       </View>
-      {/* <View style={{width: '100%', height: '200px', background: '#ff0000'}}>
-      {gData.loadCaptcha && (
+      {/* {gData?.loadCaptcha && (
         <captcha
+          styleConfig={{width: '100%', height: '200px', background: '#ff0000'}}
           id='captcha' 
           loadCaptcha={gData.loadCaptcha} 
           gt={gData.gt} 
           challenge={getData.challenge} 
           offline={getData.offline} 
-          bindonSuccess={() => {console.log('bindonSuccess')}}
-          bindonReady={() => {console.log('bindonReady')}} 
-          bindonClose={() => {console.log('bindonClose')}} 
-          bindonError={() => {console.log('bindonError')}}
+          onSuccess={() => {console.log('bindonSuccess')}}
+          onReady={() => {console.log('bindonReady')}} 
+          onClose={() => {console.log('bindonClose')}} 
+          onError={() => {console.log('bindonError')}}
         />
-      )}
-      </View> */}
+      )} */}
     </View>
   )
 }

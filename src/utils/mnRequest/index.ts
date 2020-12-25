@@ -77,7 +77,7 @@ export default class MnRequest {
           header: {
             'Content-Type': 'application/json;charset=UTF-8',
             'app-id': 'ypsj',
-            'app-platform': 'wap'
+            'app-platform': 'wxApp'
           },
           dataType: 'json',
           data: paramsObj,
