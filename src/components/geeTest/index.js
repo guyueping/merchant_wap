@@ -14,9 +14,6 @@ Page({
   onReady: function(){
   },
 
-  btnSubmit: function(){
-      this.captchaValidate()
-  }, 
   captchaRegister: function () {
       var that = this
       wx.request({
