@@ -27,10 +27,10 @@ export const pageToLogin = () => {
 }
 
 export const getEnv = () => {
-  let env =  process.env.NODE_ENV
-  if(env === 'development') {
+  let env = process.env.NODE_ENV
+  if (env === 'development') {
     return 'dev'
-  } else if(env === 'testEnv') {
+  } else if (env === 'testEnv') {
     return 'test'
   }
   return env
@@ -57,7 +57,7 @@ export const showMsg = (msg: string) => {
     title: msg,
     icon: 'none',
     duration: 2000,
-    fail: function(){},
+    fail: function () { },
     complete: () => {
       Taro.hideToast()
     }
@@ -65,7 +65,7 @@ export const showMsg = (msg: string) => {
 }
 
 export const moneyFormat = (num: number = 0) => {
-  return (num.toString().indexOf ('.') !== -1) ? num.toLocaleString() : num.toFixed(2).replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+  return (num.toString().indexOf('.') !== -1) ? num.toLocaleString() : num.toFixed(2).replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
 }
 //拉下刷新
 export const pullDownReload = (e: any, refresh: () => void) => {
@@ -82,4 +82,21 @@ export const getEndTimeStamp = (year, month, formatstr = '') => {
 
 export const getStartTimeStamp = (year, month, formatstr = '') => {
   return getTimeStamp(year, month - 1, 1, 0, 0, 0, formatstr)
+}
+let ifCanReload = true
+export const delayAction = (second: number = 5, fun) => {
+  if (ifCanReload) {
+    Taro.hideToast()
+    fun()
+    ifCanReload = false
+    setTimeout(() => {
+      ifCanReload = true
+    }, second * 1000);
+  } else {
+    Taro.showToast({
+      title: `请稍后再试`,
+      icon: 'none',
+      duration: 2000,
+    })
+  }
 }
