@@ -12,6 +12,7 @@ import { phone_reg, password_reg } from '@/utils/reg'
 import { showMsg } from '@/utils/index'
 import { getData, setData } from '@/utils/ypStore'
 import './index.styl'
+import {getStartTimeStamp, getEndTimeStamp} from '@/utils/index'
 
 const Login = () => {
   const { path, params = {} } = useRouter()
@@ -24,6 +25,8 @@ const Login = () => {
 
   useEffect(() => {
     // getGeeTest()
+   console.log(getStartTimeStamp(2020, 12))
+   console.log(getEndTimeStamp(2020, 12))
   }, [])
 
   const getGeeTest = async () => {
