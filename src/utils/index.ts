@@ -83,6 +83,8 @@ export const getEndTimeStamp = (year, month, formatstr = '') => {
 export const getStartTimeStamp = (year, month, formatstr = '') => {
   return getTimeStamp(year, month - 1, 1, 0, 0, 0, formatstr)
 }
+
+//连续刷新频繁提示
 let ifCanReload = true
 export const delayAction = (second: number = 5, fun) => {
   if (ifCanReload) {

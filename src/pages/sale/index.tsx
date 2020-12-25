@@ -38,7 +38,7 @@ const SaleList = () => {
     getInit()
   }, [])
   const getInit = () => {
-    const now: any = moment('2020-12-22 10:00:00').format('YYYY-MM-DD HH:mm')
+    const now: any = moment().format('YYYY-MM-DD HH:mm')
     setDate(now)
     getList({ now, page: 1 })
     getSales()
