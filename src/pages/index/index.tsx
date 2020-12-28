@@ -10,7 +10,7 @@ import iconTotal from '@/images/icon_total.png'
 import iconBill from '@/images/icon_bill.png'
 // import Modal from '@/components/modal'
 import MnLayout from '@/components/mnLayout'
-import req from '@/utils/mnRequest'
+import req, { request } from '@/utils/mnRequest'
 import { queryAccountBalance, queryMerchantSales } from '@/api/api'
 import { getData } from '@/utils/ypStore'
 import './index.styl'
@@ -48,31 +48,20 @@ const IndexPage = () => {
     }
   }, [])
 
-  const queryData = async () => {
-    Taro.showLoading({ title: '数据加载中...', mask: true })
-    try {
-      const {success = false, result = {}} = await req.post(queryAccountBalance)
+  const queryData = () => {
+    request(queryAccountBalance, {}, '数据加载中...', ({success = false, result = {}}) => {
       if(success) {
         setData({...data, ...result})
       }
-    } catch (err) {
-      console.log(err)
-    } finally {
-      Taro.hideLoading()
-    }
+    })
   }
 
   const getMerchantSales = async () => {
-    try {
-      const {success = false, result = {}} = await req.post(queryMerchantSales)
+    request(queryMerchantSales, {}, '', ({success = false, result = {}}) => {
       if(success) {
         setData({ ...data, totalSales: result.totalSales || 0 })
       }
-    } catch (err) {
-      console.log(err)
-    } finally {
-
-    }
+    })
   }
 
   const handleWranClick = (e) => {

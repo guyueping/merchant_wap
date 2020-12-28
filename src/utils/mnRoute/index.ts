@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro'
+import { getCurrentPageUrl } from '@/utils/index'
 /**
  * 
  * @param url 
@@ -14,6 +15,9 @@ export function backTo(num: number = 1, cb?: Function) {
   })
 }
 export function goTo(url: string, type = 1, cb?: Function) {
+  if(`/${getCurrentPageUrl()}` === url) {
+    return false
+  }
   switch (type) {
     case 1:
       // 保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 Taro.navigateBack 可以返回到原页面。小程序中页面栈最多十层。

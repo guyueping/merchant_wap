@@ -9,7 +9,9 @@ import iconRegisterPwd from '@/images/icon_register_pwd.png'
 import iconAvatar from '@/images/icon_avatar.png'
 import Modal from '@/components/modal'
 import MnLayout from '@/components/mnLayout'
-import req from '@/utils/mnRequest'
+import req, { request } from '@/utils/mnRequest'
+import { getData, setData } from '@/utils/ypStore'
+import { showMsg } from '@/utils/index'
 import './index.styl'
 
 const Mine = () => {
@@ -33,15 +35,32 @@ const Mine = () => {
   //   }
   // }
 
+  // const request = async (url, params = {}, loadingMsg = '', cb) => {
+  //   loadingMsg && Taro.showLoading({ title:loadingMsg, mask: true })
+  //   try {
+  //     const res = await req.post(url, params)
+  //     cb && cb(res)
+  //   } catch (err) {
+  //     console.log(err)
+  //   } finally {
+  //     loadingMsg && Taro.hideLoading()
+  //   }
+  // }
+
   const handleCancel = () => {
     console.log('handleCancel')
     setShowModal(false)
   }
 
   const handleConfirm = () => {
-    console.log('handleConfirm')
-    setShowModal(false)
-    Taro.navigateTo({ url: '/pages/login/index' })
+    request('seller.register.loginOut', {}, '正在退出...', (res: any) => {
+      if(res.success && res.result && res.result.success) {
+        setData('token', '')
+        showMsg('已退出')
+        setShowModal(false)
+        Taro.navigateTo({ url: '/pages/login/index' })
+      }
+    })
   }
 
   const handleQuit = () => {

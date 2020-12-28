@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Input, Navigator } from '@tarojs/components'
+import { View, Input, Image } from '@tarojs/components'
 import Taro, { useRouter } from '@tarojs/taro'
 import Header from '@/components/header'
 // import captcha from 'captcha'
@@ -21,10 +21,23 @@ const Login = () => {
   const [phone, setPhone] = useState('')
   const [pwd, setPwd] = useState('')
   const [gData, setGData] = useState({})
+  const [loadCaptcha, setLoadCaptcha] = useState(false)
+  const [challenge, setChallenge] = useState('')
+  const [gt, setGt] = useState('')
+  const [verify, setVerify] = useState(false)
+  const [toReset, setToReset] = useState(true)
+  const [offline, setOffline] = useState(true)
 
   useEffect(() => {
-    // getGeeTest()
+    getGeeTest()
   }, [])
+
+  const resetGee = () => {
+    getGeeTest()
+    setVerify(false)
+    setToReset(true)
+    // setOffline(true)
+  }
 
   const getGeeTest = async () => {
     // Taro.request({
@@ -41,18 +54,22 @@ const Login = () => {
     // })
     const {success, result = {}} = await req.post('usercenter.behavior.preProcess', {})
     if(success) {
-      const { challenge, gt, newCaptcha, success: suc } = result
-      const d = { loadCaptcha: true, gt, challenge, offline: !suc }
-      setGData(d)
+      const { challenge: challengeVal, gt: gtVal, newCaptcha, success: suc } = result
+      setLoadCaptcha(true)
+      setChallenge(challengeVal)
+      setGt(gtVal)
+      setOffline(!suc)
+      // const d = { loadCaptcha: true, gt, challenge, offline: !suc }
+      // setGData(d)
     }
   }
 
-  useEffect(() => {
-    console.log('gData>>>', gData)
-    const { page} = Taro.getCurrentInstance()
-    const a = page.selectComponent('#captcha')
-    console.log('=====', a)
-  }, [gData])
+  // useEffect(() => {
+  //   console.log('gData>>>', gData)
+  //   const { page} = Taro.getCurrentInstance()
+  //   const a = page.selectComponent('#captcha')
+  //   console.log('=====', a)
+  // }, [gData])
 
 
   const handleChange = (e, fieldName) => {
@@ -77,6 +94,7 @@ const Login = () => {
   }, [phone, pwd, btnDisabled])
 
   const handleLogin = async () => {
+    setVerify(true)
     const phoneVal = trim(phone)
     const pwdVal = trim(pwd)
     if(!phone_reg.re.test(phoneVal) || !password_reg.re.test(pwdVal)) {
@@ -109,7 +127,7 @@ const Login = () => {
         <Header noArrow title='登录'  style={{ marginLeft: '10%' }} />
       </View>
       <ChangeEnv className='change_env'>
-        <image src={bird_logo} className='bird_logo' />
+        <Image src={bird_logo} className='bird_logo' />
       </ChangeEnv>
       <View className='login_form_box'>
         <View className='field_box flex_center_start_row'>
@@ -134,27 +152,20 @@ const Login = () => {
         </View>
       </View>
       {/* <geeTest /> */}
-      <captcha 
+      {loadCaptcha && <captcha 
         id="captcha" 
-        gt="{{gt}}" 
-        loadCaptcha={gData.loadCaptcha} 
-        challenge="{{challenge}}" 
-        offline="{{offline}}"  
-        bindonSuccess="captchaSuccess"/>
-      {/* {gData?.loadCaptcha && (
-        <captcha
-          // id='captcha' 
-          // loadCaptcha={gData.loadCaptcha} 
-          // gt={gData.gt} 
-          // challenge={getData.challenge} 
-          // offline={getData.offline} 
-          // onSuccess={() => {console.log('bindonSuccess')}}
-          // onReady={() => {console.log('bindonReady')}} 
-          // onClose={() => {console.log('bindonClose')}} 
-          // onError={() => {console.log('bindonError')}}
-        />
-      )} */}
-      
+        gt={gt} 
+        loadCaptcha={loadCaptcha} 
+        challenge={challenge} 
+        offline={offline} 
+        product='bind'
+        verify={verify}
+        toReset={toReset}
+        onOnSuccess={() => {console.log('onOnSuccess');resetGee()}}
+        onOnClose={() => {console.log('onOnClose')}}
+        onOnReady={() => {console.log('bindonReady')}} 
+        onOnError={() => {console.log('bindonError')}}
+      />}
     </View>
   )
 }

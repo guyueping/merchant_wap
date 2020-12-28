@@ -11,6 +11,7 @@ export const getCurrentPageUrl = () => {
   return url
 }
 
+
 export const pageToLogin = () => {
   let path = getCurrentPageUrl()
   if (!path.includes('login')) {

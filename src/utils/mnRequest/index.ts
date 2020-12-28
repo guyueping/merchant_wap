@@ -1,5 +1,6 @@
 import Taro from '@tarojs/taro'
 import { getData } from '@/utils/ypStore'
+import { showMsg, getCurrentPageUrl } from '@/utils/index'
 
 export type Type = 'web' | 'electron' | 'react-native' | 'miniapp' // type 决定 数据的储存方式
 export interface iParams {
@@ -151,7 +152,14 @@ export default class MnRequest {
   }
 }
 
-const getCurrentPageUrl = () => {
-  const pages = Taro.getCurrentPages();
-  return pages[pages.length - 1].route
+export const request = async (url, params = {}, loadingMsg = '', cb) => {
+  loadingMsg && Taro.showLoading({ title:loadingMsg, mask: true })
+  try {
+    const res = await MnRequest.post(url, params)
+    cb && cb(res)
+  } catch (err) {
+    console.log(err)
+  } finally {
+    loadingMsg && Taro.hideLoading()
+  }
 }
